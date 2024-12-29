@@ -50,5 +50,7 @@ public partial class AddBookForm : Form
         {
             bookAuthorComboBox.Items.Add(author.AuthorName!);
         }
+
+        bookAuthorComboBox.SelectedIndex = 0;
     }
 }

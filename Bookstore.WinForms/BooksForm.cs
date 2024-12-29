@@ -19,7 +19,7 @@ public partial class BooksForm : Form
 
     void FillBooksGridView()
     {
-        List<Book> books = new List<Book>();
+        var books = new List<Book>();
 
         books = _bookService.GetBooksAsync();
 
@@ -30,6 +30,14 @@ public partial class BooksForm : Form
     {
         AddBookForm addBookForm = new AddBookForm(_bookService, _authorService);
         addBookForm.ShowDialog();
+    }
+
+    private void editBookButton_Click(object sender, EventArgs e)
+    {
+        var bookId = (Guid)booksDataGridView.CurrentRow.Cells[0].Value; 
+
+        EditBookForm editBookForm = new EditBookForm(bookId, _bookService, _authorService);
+        editBookForm.ShowDialog();
     }
 
     private void BooksForm_Activated(object sender, EventArgs e)

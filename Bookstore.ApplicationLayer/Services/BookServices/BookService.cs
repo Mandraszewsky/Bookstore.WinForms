@@ -39,6 +39,45 @@ public class BookService : IBookService
 
 
     }
+    public async Task<Book> GetBookById(Guid id)
+    {
+        Book book = new Book();
+
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        string querySQL = $"SELECT BookId, ISBN, Title, Description, PagesNumber, Quantity, AuthorName FROM GetBooksWithAuthorsView WHERE BookId = '{id}'";
+
+        try
+        {
+            conn.Open();
+
+            var command = new SqlCommand(querySQL, conn);
+            var dataReader = command.ExecuteReader();
+
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    book.BookId = Guid.Parse(dataReader["BookId"].ToString()!);
+                    book.ISBN = dataReader["ISBN"].ToString();
+                    book.Title = dataReader["Title"].ToString();
+                    book.Description = dataReader["Description"].ToString();
+                    book.AuthorName = dataReader["AuthorName"].ToString();
+                    book.PagesNumber = Convert.ToInt32(dataReader["PagesNumber"]);
+                    book.Quantity = Convert.ToInt32(dataReader["Quantity"]);
+                    book.PublicationDate = DateTime.Now;
+                }
+            }
+
+            conn.Close();
+
+            return book;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
 
     public List<Book> GetBooksAsync()
     {

@@ -31,6 +31,7 @@ partial class BooksForm
         booksDataGridView = new DataGridView();
         addBookButton = new Button();
         sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
+        editBookButton = new Button();
         ((System.ComponentModel.ISupportInitialize)booksDataGridView).BeginInit();
         SuspendLayout();
         // 
@@ -52,11 +53,22 @@ partial class BooksForm
         addBookButton.UseVisualStyleBackColor = true;
         addBookButton.Click += addBookButton_Click;
         // 
+        // editBookButton
+        // 
+        editBookButton.Location = new Point(571, 528);
+        editBookButton.Name = "editBookButton";
+        editBookButton.Size = new Size(141, 40);
+        editBookButton.TabIndex = 2;
+        editBookButton.Text = "Edit book";
+        editBookButton.UseVisualStyleBackColor = true;
+        editBookButton.Click += editBookButton_Click;
+        // 
         // BooksForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1230, 711);
+        Controls.Add(editBookButton);
         Controls.Add(addBookButton);
         Controls.Add(booksDataGridView);
         Name = "BooksForm";
@@ -71,4 +83,5 @@ partial class BooksForm
     private DataGridView booksDataGridView;
     private Button addBookButton;
     private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
+    private Button editBookButton;
 }
