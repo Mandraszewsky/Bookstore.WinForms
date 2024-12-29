@@ -6,10 +6,12 @@ namespace Bookstore.WinForms;
 public partial class BooksForm : Form
 {
     private readonly IBookService _bookService;
+    private readonly IAuthorService _authorService;
 
-    public BooksForm(IBookService bookService)
+    public BooksForm(IBookService bookService, IAuthorService authorService)
     {
         _bookService = bookService;
+        _authorService = authorService;
 
         InitializeComponent();
         FillBooksGridView();
@@ -22,5 +24,16 @@ public partial class BooksForm : Form
         books = _bookService.GetBooksAsync();
 
         booksDataGridView.DataSource = books;
+    }
+
+    private void addBookButton_Click(object sender, EventArgs e)
+    {
+        AddBookForm addBookForm = new AddBookForm(_bookService, _authorService);
+        addBookForm.ShowDialog();
+    }
+
+    private void BooksForm_Activated(object sender, EventArgs e)
+    {
+        FillBooksGridView();
     }
 }

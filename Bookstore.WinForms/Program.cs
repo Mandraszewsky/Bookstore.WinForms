@@ -18,12 +18,14 @@ internal static class Program
         ApplicationConfiguration.Initialize();
 
         var booksService = services.BuildServiceProvider().GetRequiredService<IBookService>();
+        var authorService = services.BuildServiceProvider().GetRequiredService<IAuthorService>();
 
-        Application.Run(new BooksForm(booksService));
+        Application.Run(new BooksForm(booksService, authorService));
     }
 
     private static void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<IBookService, BookService>();
+        services.AddScoped<IAuthorService, AuthorService>();
     }
 }

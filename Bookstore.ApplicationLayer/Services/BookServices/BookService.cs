@@ -1,19 +1,52 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 using Bookstore.Domain.Models;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Bookstore.ApplicationLayer.Services.BookServices;
 
 public class BookService : IBookService
 {
+    private readonly string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
+
+    public async Task CreateBook(Book book)
+    {
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("CreateBook", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@ISBN", book.ISBN));
+        command.Parameters.Add(new SqlParameter("@Title", book.Title));
+        command.Parameters.Add(new SqlParameter("@Description", book.Description));
+        command.Parameters.Add(new SqlParameter("@AuthorName", book.AuthorName));
+        command.Parameters.Add(new SqlParameter("@PagesNumber", book.PagesNumber));
+        command.Parameters.Add(new SqlParameter("@Quantity", book.Quantity));
+        command.Parameters.Add(new SqlParameter("PublicationDate", book.PublicationDate));
+
+        try
+        {
+            conn.Open();
+
+            await command.ExecuteNonQueryAsync();
+
+            conn.Close();
+        } 
+        catch (Exception ex) 
+        {
+            throw new Exception(ex.Message);
+        }
+
+
+    }
+
     public List<Book> GetBooksAsync()
     {
         List<Book> bookList = new List<Book>();
 
-        string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
         SqlConnection conn = new SqlConnection(connectionString);
 
-        string querySQL = "SELECT BookId, ISBN, Title, Description, PagesNumber, Quantity, FirstName, LastName FROM GetBooksWithAuthorsView";
+        string querySQL = "SELECT BookId, ISBN, Title, Description, PagesNumber, Quantity, AuthorName FROM GetBooksWithAuthorsView";
 
         try
         {
@@ -32,7 +65,7 @@ public class BookService : IBookService
                     book.ISBN = dataReader["ISBN"].ToString();
                     book.Title = dataReader["Title"].ToString();
                     book.Description = dataReader["Description"].ToString();
-                    book.Author = $"{dataReader["FirstName"]} {dataReader["LastName"]}";
+                    book.AuthorName = dataReader["AuthorName"].ToString();
                     book.PagesNumber = Convert.ToInt32(dataReader["PagesNumber"]);
                     book.Quantity = Convert.ToInt32(dataReader["Quantity"]);
                     book.PublicationDate = DateTime.Now;

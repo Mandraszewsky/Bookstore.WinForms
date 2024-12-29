@@ -2,9 +2,7 @@
 
 namespace Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 
-public interface IBookService
+public interface IAuthorService
 {
-    List<Book> GetBooksAsync();
-    Task CreateBook(Book book);
+    List<Author> GetAuthorList();
 }
-
