@@ -9,7 +9,7 @@ public class BookService : IBookService
 {
     private readonly string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
 
-    public async Task CreateBook(Book book)
+    public Task CreateBook(Book book)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -28,7 +28,7 @@ public class BookService : IBookService
         {
             conn.Open();
 
-            await command.ExecuteNonQueryAsync();
+            command.ExecuteNonQuery();
 
             conn.Close();
         } 
@@ -36,9 +36,11 @@ public class BookService : IBookService
         {
             throw new Exception(ex.Message);
         }
+
+        return Task.CompletedTask;
     }
 
-    public async Task UpdateBook(Book book)
+    public Task UpdateBook(Book book)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -57,7 +59,7 @@ public class BookService : IBookService
         {
             conn.Open();
 
-            await command.ExecuteNonQueryAsync();
+            command.ExecuteNonQuery();
 
             conn.Close();
         }
@@ -65,6 +67,33 @@ public class BookService : IBookService
         {
             throw new Exception(ex.Message);
         }
+
+        return Task.CompletedTask;
+    }
+
+    public Task DeleteBook(Guid id)
+    {
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("DeleteBook", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@BookId", id));
+
+        try
+        {
+            conn.Open();
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return Task.CompletedTask;
     }
 
     public async Task<Book> GetBookById(Guid id)

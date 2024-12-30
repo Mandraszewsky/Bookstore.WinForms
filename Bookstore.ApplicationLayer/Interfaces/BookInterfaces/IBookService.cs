@@ -8,5 +8,6 @@ public interface IBookService
     Task<Book> GetBookById(Guid id);
     Task CreateBook(Book book);
     Task UpdateBook(Book book);
+    Task DeleteBook(Guid id);
 }
 

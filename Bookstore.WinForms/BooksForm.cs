@@ -26,6 +26,11 @@ public partial class BooksForm : Form
         booksDataGridView.DataSource = books;
     }
 
+    private void BooksForm_Activated(object sender, EventArgs e)
+    {
+        FillBooksGridView();
+    }
+
     private void addBookButton_Click(object sender, EventArgs e)
     {
         AddBookForm addBookForm = new AddBookForm(_bookService, _authorService);
@@ -34,14 +39,18 @@ public partial class BooksForm : Form
 
     private void editBookButton_Click(object sender, EventArgs e)
     {
-        var bookId = (Guid)booksDataGridView.CurrentRow.Cells[0].Value; 
+        var bookId = (Guid)booksDataGridView.CurrentRow.Cells[0].Value;
 
         EditBookForm editBookForm = new EditBookForm(bookId, _bookService, _authorService);
         editBookForm.ShowDialog();
     }
 
-    private void BooksForm_Activated(object sender, EventArgs e)
+    private void removeBookButton_Click(object sender, EventArgs e)
     {
+        var bookId = (Guid)booksDataGridView.CurrentRow.Cells[0].Value;
+
+        _bookService.DeleteBook(bookId);
+
         FillBooksGridView();
     }
 }

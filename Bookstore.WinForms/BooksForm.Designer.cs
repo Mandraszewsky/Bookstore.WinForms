@@ -32,6 +32,7 @@ partial class BooksForm
         addBookButton = new Button();
         sqlCommandBuilder1 = new Microsoft.Data.SqlClient.SqlCommandBuilder();
         editBookButton = new Button();
+        removeBookButton = new Button();
         ((System.ComponentModel.ISupportInitialize)booksDataGridView).BeginInit();
         SuspendLayout();
         // 
@@ -63,11 +64,22 @@ partial class BooksForm
         editBookButton.UseVisualStyleBackColor = true;
         editBookButton.Click += editBookButton_Click;
         // 
+        // removeBookButton
+        // 
+        removeBookButton.Location = new Point(748, 528);
+        removeBookButton.Name = "removeBookButton";
+        removeBookButton.Size = new Size(141, 40);
+        removeBookButton.TabIndex = 3;
+        removeBookButton.Text = "Remove book";
+        removeBookButton.UseVisualStyleBackColor = true;
+        removeBookButton.Click += removeBookButton_Click;
+        // 
         // BooksForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(1230, 711);
+        Controls.Add(removeBookButton);
         Controls.Add(editBookButton);
         Controls.Add(addBookButton);
         Controls.Add(booksDataGridView);
@@ -84,4 +96,5 @@ partial class BooksForm
     private Button addBookButton;
     private Microsoft.Data.SqlClient.SqlCommandBuilder sqlCommandBuilder1;
     private Button editBookButton;
+    private Button removeBookButton;
 }
