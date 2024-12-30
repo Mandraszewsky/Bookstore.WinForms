@@ -1,14 +1,14 @@
-using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+﻿using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 using Bookstore.Domain.Models;
 
-namespace Bookstore.WinForms;
+namespace Bookstore.WinForms.Forms.BookForms;
 
-public partial class BooksForm : Form
+public partial class BookForm : Form
 {
     private readonly IBookService _bookService;
     private readonly IAuthorService _authorService;
 
-    public BooksForm(IBookService bookService, IAuthorService authorService)
+    public BookForm(IBookService bookService, IAuthorService authorService)
     {
         _bookService = bookService;
         _authorService = authorService;
@@ -31,9 +31,15 @@ public partial class BooksForm : Form
         FillBooksGridView();
     }
 
+    private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
+    {
+        FillBooksGridView();
+    }
+
     private void addBookButton_Click(object sender, EventArgs e)
     {
         AddBookForm addBookForm = new AddBookForm(_bookService, _authorService);
+        addBookForm.FormClosed += ChildForm_FormClosed;
         addBookForm.ShowDialog();
     }
 
@@ -42,6 +48,7 @@ public partial class BooksForm : Form
         var bookId = (Guid)booksDataGridView.CurrentRow.Cells[0].Value;
 
         EditBookForm editBookForm = new EditBookForm(bookId, _bookService, _authorService);
+        editBookForm.FormClosed += ChildForm_FormClosed;
         editBookForm.ShowDialog();
     }
 

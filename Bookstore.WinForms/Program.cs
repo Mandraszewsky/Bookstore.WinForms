@@ -20,7 +20,7 @@ internal static class Program
         //var booksService = services.BuildServiceProvider().GetRequiredService<IBookService>();
         //var authorService = services.BuildServiceProvider().GetRequiredService<IAuthorService>();
 
-        var booksForm = ServiceProvider.GetRequiredService<BooksForm>();
+        var booksForm = ServiceProvider.GetRequiredService<MainForm>();
 
         Application.Run(booksForm);
     }
@@ -30,6 +30,6 @@ internal static class Program
         services.AddScoped<IBookService, BookService>();
         services.AddScoped<IAuthorService, AuthorService>();
 
-        services.AddScoped<BooksForm>();
+        services.AddScoped<MainForm>();
     }
 }
