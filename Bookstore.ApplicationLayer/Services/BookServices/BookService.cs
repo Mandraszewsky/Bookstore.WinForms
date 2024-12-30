@@ -36,9 +36,37 @@ public class BookService : IBookService
         {
             throw new Exception(ex.Message);
         }
-
-
     }
+
+    public async Task UpdateBook(Book book)
+    {
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("UpdateBook", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@BookId", book.BookId));
+        command.Parameters.Add(new SqlParameter("@ISBN", book.ISBN));
+        command.Parameters.Add(new SqlParameter("@Title", book.Title));
+        command.Parameters.Add(new SqlParameter("@Description", book.Description));
+        command.Parameters.Add(new SqlParameter("@PagesNumber", book.PagesNumber));
+        command.Parameters.Add(new SqlParameter("@Quantity", book.Quantity));
+        command.Parameters.Add(new SqlParameter("PublicationDate", book.PublicationDate));
+
+        try
+        {
+            conn.Open();
+
+            await command.ExecuteNonQueryAsync();
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+    }
+
     public async Task<Book> GetBookById(Guid id)
     {
         Book book = new Book();

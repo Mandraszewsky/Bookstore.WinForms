@@ -80,6 +80,7 @@ partial class EditBookForm
         updateBookButton.TabIndex = 28;
         updateBookButton.Text = "Update";
         updateBookButton.UseVisualStyleBackColor = true;
+        updateBookButton.Click += updateBookButton_Click;
         // 
         // bookPublicationDateLabel
         // 

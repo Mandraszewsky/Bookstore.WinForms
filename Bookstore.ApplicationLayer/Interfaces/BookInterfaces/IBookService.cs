@@ -7,5 +7,6 @@ public interface IBookService
     List<Book> GetBooksAsync();
     Task<Book> GetBookById(Guid id);
     Task CreateBook(Book book);
+    Task UpdateBook(Book book);
 }
 

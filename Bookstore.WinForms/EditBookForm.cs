@@ -42,4 +42,23 @@ public partial class EditBookForm : Form
                 bookAuthorComboBox.SelectedIndex = index;
         }
     }
+
+    private void updateBookButton_Click(object sender, EventArgs e)
+    {
+        var book = new Book
+        {
+            BookId = bookId,
+            ISBN = bookISBNTextBox.Text,
+            Title = bookTitleTextBox.Text,
+            Description = bookDescriptionTextBox.Text,
+            AuthorName = bookAuthorComboBox.Text,
+            PagesNumber = Convert.ToInt32(bookPageNumberTextBox.Text),
+            Quantity = Convert.ToInt32(bookQuantityTextBox.Text),
+            PublicationDate = bookPublicationDateDateTimePicker.Value,
+        };
+
+        _bookService.UpdateBook(book);
+
+        this.Close();
+    }
 }
