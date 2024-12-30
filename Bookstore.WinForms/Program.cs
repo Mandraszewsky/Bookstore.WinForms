@@ -12,20 +12,24 @@ internal static class Program
     static void Main()
     {
         var services = new ServiceCollection();
-
         ConfigureServices(services);
+        ServiceProvider = services.BuildServiceProvider();
 
         ApplicationConfiguration.Initialize();
 
-        var booksService = services.BuildServiceProvider().GetRequiredService<IBookService>();
-        var authorService = services.BuildServiceProvider().GetRequiredService<IAuthorService>();
+        //var booksService = services.BuildServiceProvider().GetRequiredService<IBookService>();
+        //var authorService = services.BuildServiceProvider().GetRequiredService<IAuthorService>();
 
-        Application.Run(new BooksForm(booksService, authorService));
+        var booksForm = ServiceProvider.GetRequiredService<BooksForm>();
+
+        Application.Run(booksForm);
     }
 
     private static void ConfigureServices(IServiceCollection services)
     {
         services.AddScoped<IBookService, BookService>();
         services.AddScoped<IAuthorService, AuthorService>();
+
+        services.AddScoped<BooksForm>();
     }
 }
