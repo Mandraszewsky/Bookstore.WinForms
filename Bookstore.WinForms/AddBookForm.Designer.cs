@@ -51,42 +51,42 @@ partial class AddBookForm
         bookTitleTextBox.Location = new Point(155, 99);
         bookTitleTextBox.Name = "bookTitleTextBox";
         bookTitleTextBox.Size = new Size(238, 23);
-        bookTitleTextBox.TabIndex = 0;
+        bookTitleTextBox.TabIndex = 20;
         // 
         // bookISBNTextBox
         // 
         bookISBNTextBox.Location = new Point(155, 52);
         bookISBNTextBox.Name = "bookISBNTextBox";
         bookISBNTextBox.Size = new Size(238, 23);
-        bookISBNTextBox.TabIndex = 1;
+        bookISBNTextBox.TabIndex = 10;
         // 
         // bookDescriptionTextBox
         // 
         bookDescriptionTextBox.Location = new Point(155, 139);
         bookDescriptionTextBox.Name = "bookDescriptionTextBox";
         bookDescriptionTextBox.Size = new Size(238, 23);
-        bookDescriptionTextBox.TabIndex = 2;
+        bookDescriptionTextBox.TabIndex = 30;
         // 
         // bookPageNumberTextBox
         // 
         bookPageNumberTextBox.Location = new Point(155, 257);
         bookPageNumberTextBox.Name = "bookPageNumberTextBox";
         bookPageNumberTextBox.Size = new Size(78, 23);
-        bookPageNumberTextBox.TabIndex = 3;
+        bookPageNumberTextBox.TabIndex = 60;
         // 
         // bookQuantityTextBox
         // 
         bookQuantityTextBox.Location = new Point(155, 298);
         bookQuantityTextBox.Name = "bookQuantityTextBox";
         bookQuantityTextBox.Size = new Size(78, 23);
-        bookQuantityTextBox.TabIndex = 4;
+        bookQuantityTextBox.TabIndex = 70;
         // 
         // bookPublicationDateDateTimePicker
         // 
         bookPublicationDateDateTimePicker.Location = new Point(155, 215);
         bookPublicationDateDateTimePicker.Name = "bookPublicationDateDateTimePicker";
         bookPublicationDateDateTimePicker.Size = new Size(149, 23);
-        bookPublicationDateDateTimePicker.TabIndex = 5;
+        bookPublicationDateDateTimePicker.TabIndex = 50;
         // 
         // bookISBNLabel
         // 
@@ -114,7 +114,6 @@ partial class AddBookForm
         bookDescriptionLabel.Size = new Size(73, 15);
         bookDescriptionLabel.TabIndex = 8;
         bookDescriptionLabel.Text = "Description :";
-        bookDescriptionLabel.Click += label1_Click;
         // 
         // bookPageNumberLabel
         // 
@@ -148,7 +147,7 @@ partial class AddBookForm
         addBookButton.Location = new Point(283, 390);
         addBookButton.Name = "addBookButton";
         addBookButton.Size = new Size(110, 31);
-        addBookButton.TabIndex = 12;
+        addBookButton.TabIndex = 80;
         addBookButton.Text = "Add";
         addBookButton.UseVisualStyleBackColor = true;
         addBookButton.Click += addBookButton_Click;
@@ -158,7 +157,7 @@ partial class AddBookForm
         cancelBookButton.Location = new Point(422, 390);
         cancelBookButton.Name = "cancelBookButton";
         cancelBookButton.Size = new Size(110, 31);
-        cancelBookButton.TabIndex = 13;
+        cancelBookButton.TabIndex = 90;
         cancelBookButton.Text = "Cancel";
         cancelBookButton.UseVisualStyleBackColor = true;
         // 
@@ -168,7 +167,7 @@ partial class AddBookForm
         bookAuthorComboBox.Location = new Point(155, 177);
         bookAuthorComboBox.Name = "bookAuthorComboBox";
         bookAuthorComboBox.Size = new Size(149, 23);
-        bookAuthorComboBox.TabIndex = 14;
+        bookAuthorComboBox.TabIndex = 40;
         // 
         // bookAuthorLabel
         // 
@@ -183,6 +182,7 @@ partial class AddBookForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
+        CancelButton = cancelBookButton;
         ClientSize = new Size(568, 448);
         Controls.Add(bookAuthorLabel);
         Controls.Add(bookAuthorComboBox);
@@ -200,6 +200,7 @@ partial class AddBookForm
         Controls.Add(bookDescriptionTextBox);
         Controls.Add(bookISBNTextBox);
         Controls.Add(bookTitleTextBox);
+        MinimizeBox = false;
         Name = "AddBookForm";
         Text = "Add Book";
         ResumeLayout(false);

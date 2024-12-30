@@ -17,9 +17,18 @@ public partial class AddBookForm : Form
         FillAuthorComboBox();
     }
 
-    private void label1_Click(object sender, EventArgs e)
+    private void FillAuthorComboBox()
     {
+        var authors = new List<Author>();
 
+        authors = _authorService.GetAuthorList();
+
+        foreach (var author in authors)
+        {
+            bookAuthorComboBox.Items.Add(author.AuthorName!);
+        }
+
+        bookAuthorComboBox.SelectedIndex = 0;
     }
 
     private void addBookButton_Click(object sender, EventArgs e)
@@ -38,19 +47,5 @@ public partial class AddBookForm : Form
         _bookService.CreateBook(book);
 
         this.Close();
-    }
-
-    private void FillAuthorComboBox()
-    {
-        var authors = new List<Author>();
-
-        authors = _authorService.GetAuthorList();
-
-        foreach (var author in authors)
-        {
-            bookAuthorComboBox.Items.Add(author.AuthorName!);
-        }
-
-        bookAuthorComboBox.SelectedIndex = 0;
     }
 }

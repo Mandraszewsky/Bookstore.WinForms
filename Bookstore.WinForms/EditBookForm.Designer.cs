@@ -61,14 +61,14 @@ partial class EditBookForm
         bookAuthorComboBox.Location = new Point(136, 159);
         bookAuthorComboBox.Name = "bookAuthorComboBox";
         bookAuthorComboBox.Size = new Size(149, 23);
-        bookAuthorComboBox.TabIndex = 30;
+        bookAuthorComboBox.TabIndex = 40;
         // 
         // cancelBookButton
         // 
         cancelBookButton.Location = new Point(403, 372);
         cancelBookButton.Name = "cancelBookButton";
         cancelBookButton.Size = new Size(110, 31);
-        cancelBookButton.TabIndex = 29;
+        cancelBookButton.TabIndex = 90;
         cancelBookButton.Text = "Cancel";
         cancelBookButton.UseVisualStyleBackColor = true;
         // 
@@ -77,7 +77,7 @@ partial class EditBookForm
         updateBookButton.Location = new Point(264, 372);
         updateBookButton.Name = "updateBookButton";
         updateBookButton.Size = new Size(110, 31);
-        updateBookButton.TabIndex = 28;
+        updateBookButton.TabIndex = 80;
         updateBookButton.Text = "Update";
         updateBookButton.UseVisualStyleBackColor = true;
         updateBookButton.Click += updateBookButton_Click;
@@ -141,47 +141,48 @@ partial class EditBookForm
         bookPublicationDateDateTimePicker.Location = new Point(136, 197);
         bookPublicationDateDateTimePicker.Name = "bookPublicationDateDateTimePicker";
         bookPublicationDateDateTimePicker.Size = new Size(149, 23);
-        bookPublicationDateDateTimePicker.TabIndex = 21;
+        bookPublicationDateDateTimePicker.TabIndex = 50;
         // 
         // bookQuantityTextBox
         // 
         bookQuantityTextBox.Location = new Point(136, 280);
         bookQuantityTextBox.Name = "bookQuantityTextBox";
         bookQuantityTextBox.Size = new Size(78, 23);
-        bookQuantityTextBox.TabIndex = 20;
+        bookQuantityTextBox.TabIndex = 70;
         // 
         // bookPageNumberTextBox
         // 
         bookPageNumberTextBox.Location = new Point(136, 239);
         bookPageNumberTextBox.Name = "bookPageNumberTextBox";
         bookPageNumberTextBox.Size = new Size(78, 23);
-        bookPageNumberTextBox.TabIndex = 19;
+        bookPageNumberTextBox.TabIndex = 60;
         // 
         // bookDescriptionTextBox
         // 
         bookDescriptionTextBox.Location = new Point(136, 121);
         bookDescriptionTextBox.Name = "bookDescriptionTextBox";
         bookDescriptionTextBox.Size = new Size(238, 23);
-        bookDescriptionTextBox.TabIndex = 18;
+        bookDescriptionTextBox.TabIndex = 30;
         // 
         // bookISBNTextBox
         // 
         bookISBNTextBox.Location = new Point(136, 34);
         bookISBNTextBox.Name = "bookISBNTextBox";
         bookISBNTextBox.Size = new Size(238, 23);
-        bookISBNTextBox.TabIndex = 17;
+        bookISBNTextBox.TabIndex = 10;
         // 
         // bookTitleTextBox
         // 
         bookTitleTextBox.Location = new Point(136, 81);
         bookTitleTextBox.Name = "bookTitleTextBox";
         bookTitleTextBox.Size = new Size(238, 23);
-        bookTitleTextBox.TabIndex = 16;
+        bookTitleTextBox.TabIndex = 20;
         // 
         // EditBookForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
+        CancelButton = cancelBookButton;
         ClientSize = new Size(559, 434);
         Controls.Add(bookAuthorLabel);
         Controls.Add(bookAuthorComboBox);
@@ -199,8 +200,9 @@ partial class EditBookForm
         Controls.Add(bookDescriptionTextBox);
         Controls.Add(bookISBNTextBox);
         Controls.Add(bookTitleTextBox);
+        MinimizeBox = false;
         Name = "EditBookForm";
-        Text = "EditBookForm";
+        Text = "Edit Book";
         ResumeLayout(false);
         PerformLayout();
     }

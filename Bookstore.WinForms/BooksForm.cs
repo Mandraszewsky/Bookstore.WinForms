@@ -48,9 +48,15 @@ public partial class BooksForm : Form
     private void removeBookButton_Click(object sender, EventArgs e)
     {
         var bookId = (Guid)booksDataGridView.CurrentRow.Cells[0].Value;
+        var bookTitle = (string)booksDataGridView.CurrentRow.Cells[2].Value;
 
-        _bookService.DeleteBook(bookId);
+        var result = MessageBox.Show($"You want to delete the book titled: {bookTitle}?", "Delete", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-        FillBooksGridView();
+        if (result == DialogResult.Yes)
+        {
+            _bookService.DeleteBook(bookId);
+
+            FillBooksGridView();
+        }
     }
 }

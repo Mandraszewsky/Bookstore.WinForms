@@ -49,7 +49,7 @@ partial class BooksForm
         addBookButton.Location = new Point(393, 528);
         addBookButton.Name = "addBookButton";
         addBookButton.Size = new Size(141, 40);
-        addBookButton.TabIndex = 1;
+        addBookButton.TabIndex = 10;
         addBookButton.Text = "Add book";
         addBookButton.UseVisualStyleBackColor = true;
         addBookButton.Click += addBookButton_Click;
@@ -59,7 +59,7 @@ partial class BooksForm
         editBookButton.Location = new Point(571, 528);
         editBookButton.Name = "editBookButton";
         editBookButton.Size = new Size(141, 40);
-        editBookButton.TabIndex = 2;
+        editBookButton.TabIndex = 20;
         editBookButton.Text = "Edit book";
         editBookButton.UseVisualStyleBackColor = true;
         editBookButton.Click += editBookButton_Click;
@@ -69,7 +69,7 @@ partial class BooksForm
         removeBookButton.Location = new Point(748, 528);
         removeBookButton.Name = "removeBookButton";
         removeBookButton.Size = new Size(141, 40);
-        removeBookButton.TabIndex = 3;
+        removeBookButton.TabIndex = 30;
         removeBookButton.Text = "Remove book";
         removeBookButton.UseVisualStyleBackColor = true;
         removeBookButton.Click += removeBookButton_Click;
@@ -83,8 +83,9 @@ partial class BooksForm
         Controls.Add(editBookButton);
         Controls.Add(addBookButton);
         Controls.Add(booksDataGridView);
+        MaximizeBox = false;
         Name = "BooksForm";
-        Text = "Form1";
+        Text = "Bookstore";
         Activated += BooksForm_Activated;
         ((System.ComponentModel.ISupportInitialize)booksDataGridView).EndInit();
         ResumeLayout(false);
