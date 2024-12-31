@@ -1,4 +1,5 @@
-﻿using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
+﻿using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
+using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.Domain.Models;
 
 namespace Bookstore.WinForms.Forms.ReservationForms;
@@ -7,11 +8,13 @@ public partial class ReservationForm : Form
 {
     private readonly IReservationService _reservationService;
     private readonly IReservationDetailService _reservationDetailService;
+    private readonly ICustomerService _customerService;
 
-    public ReservationForm(IReservationService reservationService, IReservationDetailService reservationDetailService)
+    public ReservationForm(IReservationService reservationService, IReservationDetailService reservationDetailService, ICustomerService customerService)
     {
         _reservationService = reservationService;
         _reservationDetailService = reservationDetailService;
+        _customerService = customerService;
 
         InitializeComponent();
         FillReservationsGridView();
@@ -32,5 +35,11 @@ public partial class ReservationForm : Form
 
         ReservationDetailsForm reservationDetailsForm = new ReservationDetailsForm(reservationId, _reservationDetailService);
         reservationDetailsForm.ShowDialog();
+    }
+
+    private void addReservationButton_Click(object sender, EventArgs e)
+    {
+        AddReservationForm addReservationForm = new AddReservationForm(_customerService, _reservationService);
+        addReservationForm.ShowDialog();
     }
 }

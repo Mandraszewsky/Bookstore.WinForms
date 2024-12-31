@@ -90,7 +90,7 @@ public partial class MainForm : Form
 
     private void reservationsButton_Click(object sender, EventArgs e)
     {
-        ReservationForm reservationForm = new ReservationForm(_reservationService, _reservationDetailService);
+        ReservationForm reservationForm = new ReservationForm(_reservationService, _reservationDetailService, _customerService);
         OpenChildForm(reservationForm, sender, e);
     }
 

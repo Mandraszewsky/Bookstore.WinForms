@@ -62,6 +62,7 @@ partial class ReservationForm
         addReservationButton.TabIndex = 36;
         addReservationButton.Text = "Add reservation";
         addReservationButton.UseVisualStyleBackColor = true;
+        addReservationButton.Click += addReservationButton_Click;
         // 
         // reservationsDataGridView
         // 

@@ -1,4 +1,5 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
+using Bookstore.Domain.Enums;
 using Bookstore.Domain.Models;
 using Microsoft.Data.SqlClient;
 using System.Data;
@@ -16,7 +17,8 @@ public class ReservationService : IReservationService
         var command = new SqlCommand("CreateReservation", conn);
         command.CommandType = CommandType.StoredProcedure;
 
-        command.Parameters.Add(new SqlParameter("@CustomerID", reservation.CustomerID));
+        command.Parameters.Add(new SqlParameter("@CustomerName", reservation.CustomerName));
+        command.Parameters.Add(new SqlParameter("@ReservationStatus", reservation.ReservationStatus));
         command.Parameters.Add(new SqlParameter("@ReservationDate", reservation.ReservationDate));
 
         try
@@ -78,7 +80,7 @@ public class ReservationService : IReservationService
 
         SqlConnection conn = new SqlConnection(connectionString);
 
-        string querySQL = "SELECT ReservationID, ReservationDate, CustomerID, CustomerName, EmailAddress FROM GetReservationView";
+        string querySQL = "SELECT ReservationID, ReservationStatus, ReservationDate, CustomerID, CustomerName, EmailAddress FROM GetReservationView";
 
         try
         {
@@ -94,12 +96,11 @@ public class ReservationService : IReservationService
                     Reservation reservation = new Reservation();
 
                     reservation.ReservationID = Guid.Parse(dataReader["ReservationID"].ToString()!);
-                    reservation.ReservationDate = DateTime.Now;
+                    reservation.ReservationStatus = (ReservationStatusEnum)Convert.ToInt32(dataReader["ReservationStatus"].ToString());
+                    reservation.ReservationDate = DateTime.Parse(dataReader["ReservationDate"].ToString()!);
                     reservation.CustomerID = Guid.Parse(dataReader["CustomerID"].ToString()!);
                     reservation.CustomerName = dataReader["CustomerName"].ToString();
                     reservation.EmailAddress = dataReader["EmailAddress"].ToString();
-
-                    //book.PublicationDate = Convert.ToDateTime(dataReader["PublicationDate"]);
 
                     reservationList.Add(reservation);
                 }
