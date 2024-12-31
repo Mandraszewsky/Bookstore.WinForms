@@ -1,4 +1,6 @@
-﻿namespace Bookstore.Domain.Models;
+﻿using Bookstore.Domain.Enums;
+
+namespace Bookstore.Domain.Models;
 
 public class Reservation
 {
@@ -6,6 +8,7 @@ public class Reservation
     public Guid? CustomerID { get; set; }
     public string? CustomerName { get; set; } = default!;
     public string? EmailAddress { get; set; } = default!;
+    public ReservationStatusEnum? ReservationStatus { get; set; } = default!;
     public DateTime? ReservationDate { get; set; } = default!;
 
 }

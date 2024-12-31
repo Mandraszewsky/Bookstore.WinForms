@@ -1,7 +1,10 @@
 using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
+using Bookstore.WinForms.Forms.AuthorForms;
 using Bookstore.WinForms.Forms.BookForms;
+using Bookstore.WinForms.Forms.CustomerForms;
 using Bookstore.WinForms.Forms.ReservationForms;
 
 namespace Bookstore.WinForms;
@@ -10,16 +13,18 @@ public partial class MainForm : Form
 {
     private readonly IBookService _bookService;
     private readonly IAuthorService _authorService;
+    private readonly ICustomerService _customerService;
     private readonly IReservationService _reservationService;
     private readonly IReservationDetailService _reservationDetailService;
 
     private Button currentButton;
     private Form activeForm;
 
-    public MainForm(IBookService bookService, IAuthorService authorService, IReservationService reservationService, IReservationDetailService reservationDetailService)
+    public MainForm(IBookService bookService, IAuthorService authorService, ICustomerService customerService, IReservationService reservationService, IReservationDetailService reservationDetailService)
     {
         _bookService = bookService;
         _authorService = authorService;
+        _customerService = customerService;
         _reservationService = reservationService;
         _reservationDetailService = reservationDetailService;
 
@@ -91,11 +96,13 @@ public partial class MainForm : Form
 
     private void authorsButton_Click(object sender, EventArgs e)
     {
-        ActivateButton(sender, e);
+        AuthorForm authorForm = new AuthorForm(_authorService);
+        OpenChildForm(authorForm, sender, e);
     }
 
     private void cutomersButton_Click(object sender, EventArgs e)
     {
-        ActivateButton(sender, e);
+        CustomerForm customerForm = new CustomerForm(_customerService);
+        OpenChildForm(customerForm, sender, e);
     }
 }
