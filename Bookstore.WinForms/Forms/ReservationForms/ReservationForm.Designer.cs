@@ -32,6 +32,7 @@ partial class ReservationForm
         editReservationButton = new Button();
         addReservationButton = new Button();
         reservationsDataGridView = new DataGridView();
+        reservationDetailsButton = new Button();
         ((System.ComponentModel.ISupportInitialize)reservationsDataGridView).BeginInit();
         SuspendLayout();
         // 
@@ -70,11 +71,22 @@ partial class ReservationForm
         reservationsDataGridView.Size = new Size(718, 436);
         reservationsDataGridView.TabIndex = 35;
         // 
+        // reservationDetailsButton
+        // 
+        reservationDetailsButton.Location = new Point(635, 487);
+        reservationDetailsButton.Name = "reservationDetailsButton";
+        reservationDetailsButton.Size = new Size(141, 40);
+        reservationDetailsButton.TabIndex = 39;
+        reservationDetailsButton.Text = "Show details";
+        reservationDetailsButton.UseVisualStyleBackColor = true;
+        reservationDetailsButton.Click += reservationDetailsButton_Click;
+        // 
         // ReservationForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(909, 549);
+        Controls.Add(reservationDetailsButton);
         Controls.Add(removeReservationButton);
         Controls.Add(editReservationButton);
         Controls.Add(addReservationButton);
@@ -91,4 +103,5 @@ partial class ReservationForm
     private Button editReservationButton;
     private Button addReservationButton;
     private DataGridView reservationsDataGridView;
+    private Button reservationDetailsButton;
 }

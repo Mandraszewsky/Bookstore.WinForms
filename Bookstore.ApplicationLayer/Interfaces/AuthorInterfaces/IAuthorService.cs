@@ -1,6 +1,6 @@
 ﻿using Bookstore.Domain.Models;
 
-namespace Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+namespace Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 
 public interface IAuthorService
 {

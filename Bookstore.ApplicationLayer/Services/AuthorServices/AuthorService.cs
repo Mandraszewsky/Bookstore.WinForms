@@ -1,8 +1,8 @@
-﻿using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+﻿using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 using Bookstore.Domain.Models;
 using Microsoft.Data.SqlClient;
 
-namespace Bookstore.ApplicationLayer.Services.BookServices;
+namespace Bookstore.ApplicationLayer.Services.AuthorServices;
 
 public class AuthorService : IAuthorService
 {

@@ -1,4 +1,5 @@
-﻿using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+﻿using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
+using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 using Bookstore.Domain.Models;
 
 namespace Bookstore.WinForms;

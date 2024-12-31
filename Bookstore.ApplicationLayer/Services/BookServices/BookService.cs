@@ -142,7 +142,7 @@ public class BookService : IBookService
 
         SqlConnection conn = new SqlConnection(connectionString);
 
-        string querySQL = "SELECT BookId, ISBN, Title, Description, PagesNumber, Quantity, AuthorName FROM GetBooksWithAuthorsView";
+        string querySQL = "SELECT BookId, ISBN, Title, Description, PagesNumber, Quantity, PublicationDate, AuthorName FROM GetBooksWithAuthorsView";
 
         try
         {
@@ -164,8 +164,7 @@ public class BookService : IBookService
                     book.AuthorName = dataReader["AuthorName"].ToString();
                     book.PagesNumber = Convert.ToInt32(dataReader["PagesNumber"]);
                     book.Quantity = Convert.ToInt32(dataReader["Quantity"]);
-                    book.PublicationDate = DateTime.Now;
-                    //book.PublicationDate = Convert.ToDateTime(dataReader["PublicationDate"]);
+                    book.PublicationDate = DateTime.Parse(dataReader["PublicationDate"].ToString()!);
 
                     bookList.Add(book);
                 }

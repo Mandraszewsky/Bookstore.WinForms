@@ -1,6 +1,7 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.Domain.Models;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Bookstore.ApplicationLayer.Services.ReservationServices;
 
@@ -10,12 +11,65 @@ public class ReservationService : IReservationService
 
     public Task CreateReservation(Reservation reservation)
     {
-        throw new NotImplementedException();
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("CreateReservation", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@CustomerID", reservation.CustomerID));
+        command.Parameters.Add(new SqlParameter("@ReservationDate", reservation.ReservationDate));
+
+        try
+        {
+            conn.Open();
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return Task.CompletedTask;
     }
 
-    public Task<Reservation> GetReservation(Guid id)
+    public async Task<Reservation> GetReservation(Guid id)
     {
-        throw new NotImplementedException();
+        Reservation reservation = new Reservation();
+
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        string querySQL = $"SELECT ReservationID, ReservationDate, CustomerID, CustomerName, EmailAddress FROM GetReservationView WHERE ReservationID = '{id}'";
+
+        try
+        {
+            conn.Open();
+
+            var command = new SqlCommand(querySQL, conn);
+            var dataReader = command.ExecuteReader();
+
+            if (dataReader != null)
+            {
+                while (dataReader.Read())
+                {
+                    reservation.ReservationID = Guid.Parse(dataReader["ReservationID"].ToString()!);
+                    reservation.ReservationDate = DateTime.Now;
+                    reservation.CustomerID = Guid.Parse(dataReader["CustomerID"].ToString()!);
+                    reservation.CustomerName = dataReader["CustomerName"].ToString();
+                    reservation.EmailAddress = dataReader["EmailAddress"].ToString();
+                }
+            }
+
+            conn.Close();
+
+            return reservation;
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
     }
 
     public List<Reservation> GetReservations()
@@ -24,7 +78,7 @@ public class ReservationService : IReservationService
 
         SqlConnection conn = new SqlConnection(connectionString);
 
-        string querySQL = "SELECT ReservationID, ReservationDate, CustomerName, EmailAddress FROM GetReservationView";
+        string querySQL = "SELECT ReservationID, ReservationDate, CustomerID, CustomerName, EmailAddress FROM GetReservationView";
 
         try
         {
@@ -41,6 +95,7 @@ public class ReservationService : IReservationService
 
                     reservation.ReservationID = Guid.Parse(dataReader["ReservationID"].ToString()!);
                     reservation.ReservationDate = DateTime.Now;
+                    reservation.CustomerID = Guid.Parse(dataReader["CustomerID"].ToString()!);
                     reservation.CustomerName = dataReader["CustomerName"].ToString();
                     reservation.EmailAddress = dataReader["EmailAddress"].ToString();
 
