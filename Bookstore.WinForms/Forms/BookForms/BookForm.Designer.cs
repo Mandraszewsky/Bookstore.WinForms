@@ -37,7 +37,7 @@ partial class BookForm
         // 
         // removeBookButton
         // 
-        removeBookButton.Location = new Point(500, 492);
+        removeBookButton.Location = new Point(450, 487);
         removeBookButton.Name = "removeBookButton";
         removeBookButton.Size = new Size(141, 40);
         removeBookButton.TabIndex = 34;
@@ -47,7 +47,7 @@ partial class BookForm
         // 
         // editBookButton
         // 
-        editBookButton.Location = new Point(323, 492);
+        editBookButton.Location = new Point(273, 487);
         editBookButton.Name = "editBookButton";
         editBookButton.Size = new Size(141, 40);
         editBookButton.TabIndex = 33;
@@ -57,7 +57,7 @@ partial class BookForm
         // 
         // addBookButton
         // 
-        addBookButton.Location = new Point(145, 492);
+        addBookButton.Location = new Point(95, 487);
         addBookButton.Name = "addBookButton";
         addBookButton.Size = new Size(141, 40);
         addBookButton.TabIndex = 32;
@@ -68,7 +68,7 @@ partial class BookForm
         // booksDataGridView
         // 
         booksDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-        booksDataGridView.Location = new Point(145, 26);
+        booksDataGridView.Location = new Point(95, 21);
         booksDataGridView.Name = "booksDataGridView";
         booksDataGridView.Size = new Size(718, 436);
         booksDataGridView.TabIndex = 31;

@@ -1,5 +1,7 @@
 using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.WinForms.Forms.BookForms;
+using Bookstore.WinForms.Forms.ReservationForms;
 
 namespace Bookstore.WinForms;
 
@@ -7,14 +9,16 @@ public partial class MainForm : Form
 {
     private readonly IBookService _bookService;
     private readonly IAuthorService _authorService;
+    private readonly IReservationService _reservationService;
 
     private Button currentButton;
     private Form activeForm;
 
-    public MainForm(IBookService bookService, IAuthorService authorService)
+    public MainForm(IBookService bookService, IAuthorService authorService, IReservationService reservationService)
     {
         _bookService = bookService;
         _authorService = authorService;
+        _reservationService = reservationService;
 
         currentButton = new Button();
         activeForm = new Form();
@@ -78,7 +82,8 @@ public partial class MainForm : Form
 
     private void reservationsButton_Click(object sender, EventArgs e)
     {
-        ActivateButton(sender, e);
+        ReservationForm reservationForm = new ReservationForm(_reservationService);
+        OpenChildForm(reservationForm, sender, e);
     }
 
     private void authorsButton_Click(object sender, EventArgs e)

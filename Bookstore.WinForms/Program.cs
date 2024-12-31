@@ -1,5 +1,7 @@
 using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.ApplicationLayer.Services.BookServices;
+using Bookstore.ApplicationLayer.Services.ReservationServices;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookstore.WinForms;
@@ -29,6 +31,7 @@ internal static class Program
     {
         services.AddScoped<IBookService, BookService>();
         services.AddScoped<IAuthorService, AuthorService>();
+        services.AddScoped<IReservationService, ReservationService>();
 
         services.AddScoped<MainForm>();
     }

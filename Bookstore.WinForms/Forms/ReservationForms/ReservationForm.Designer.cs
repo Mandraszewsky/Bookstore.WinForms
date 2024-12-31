@@ -1,0 +1,94 @@
+﻿namespace Bookstore.WinForms.Forms.ReservationForms;
+
+partial class ReservationForm
+{
+    /// <summary>
+    /// Required designer variable.
+    /// </summary>
+    private System.ComponentModel.IContainer components = null;
+
+    /// <summary>
+    /// Clean up any resources being used.
+    /// </summary>
+    /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+    protected override void Dispose(bool disposing)
+    {
+        if (disposing && (components != null))
+        {
+            components.Dispose();
+        }
+        base.Dispose(disposing);
+    }
+
+    #region Windows Form Designer generated code
+
+    /// <summary>
+    /// Required method for Designer support - do not modify
+    /// the contents of this method with the code editor.
+    /// </summary>
+    private void InitializeComponent()
+    {
+        removeReservationButton = new Button();
+        editReservationButton = new Button();
+        addReservationButton = new Button();
+        reservationsDataGridView = new DataGridView();
+        ((System.ComponentModel.ISupportInitialize)reservationsDataGridView).BeginInit();
+        SuspendLayout();
+        // 
+        // removeReservationButton
+        // 
+        removeReservationButton.Location = new Point(450, 487);
+        removeReservationButton.Name = "removeReservationButton";
+        removeReservationButton.Size = new Size(141, 40);
+        removeReservationButton.TabIndex = 38;
+        removeReservationButton.Text = "Remove reservation";
+        removeReservationButton.UseVisualStyleBackColor = true;
+        // 
+        // editReservationButton
+        // 
+        editReservationButton.Location = new Point(273, 487);
+        editReservationButton.Name = "editReservationButton";
+        editReservationButton.Size = new Size(141, 40);
+        editReservationButton.TabIndex = 37;
+        editReservationButton.Text = "Edit reservation";
+        editReservationButton.UseVisualStyleBackColor = true;
+        // 
+        // addReservationButton
+        // 
+        addReservationButton.Location = new Point(95, 487);
+        addReservationButton.Name = "addReservationButton";
+        addReservationButton.Size = new Size(141, 40);
+        addReservationButton.TabIndex = 36;
+        addReservationButton.Text = "Add reservation";
+        addReservationButton.UseVisualStyleBackColor = true;
+        // 
+        // reservationsDataGridView
+        // 
+        reservationsDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+        reservationsDataGridView.Location = new Point(95, 21);
+        reservationsDataGridView.Name = "reservationsDataGridView";
+        reservationsDataGridView.Size = new Size(718, 436);
+        reservationsDataGridView.TabIndex = 35;
+        // 
+        // ReservationForm
+        // 
+        AutoScaleDimensions = new SizeF(7F, 15F);
+        AutoScaleMode = AutoScaleMode.Font;
+        ClientSize = new Size(909, 549);
+        Controls.Add(removeReservationButton);
+        Controls.Add(editReservationButton);
+        Controls.Add(addReservationButton);
+        Controls.Add(reservationsDataGridView);
+        Name = "ReservationForm";
+        Text = "ReservationForm";
+        ((System.ComponentModel.ISupportInitialize)reservationsDataGridView).EndInit();
+        ResumeLayout(false);
+    }
+
+    #endregion
+
+    private Button removeReservationButton;
+    private Button editReservationButton;
+    private Button addReservationButton;
+    private DataGridView reservationsDataGridView;
+}
