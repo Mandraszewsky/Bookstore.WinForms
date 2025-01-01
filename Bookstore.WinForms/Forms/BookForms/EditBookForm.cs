@@ -1,5 +1,6 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
+using Bookstore.ApplicationLayer.Validators;
 using Bookstore.DomainLayer.Models;
 
 namespace Bookstore.WinForms;
@@ -58,8 +59,18 @@ public partial class EditBookForm : Form
             PublicationDate = bookPublicationDateDateTimePicker.Value,
         };
 
-        _bookService.UpdateBook(book);
+        var validator = new BookValidator();
+        var validatorResults = validator.Validate(book);
 
-        this.Close();
+        if (!validatorResults.IsValid)
+        {
+            string errorMessages = string.Join(Environment.NewLine, validatorResults.Errors.Select(error => error.ErrorMessage));
+            MessageBox.Show(errorMessages, "Validation error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+        }
+        else
+        {
+            _bookService.UpdateBook(book);
+            this.Close();
+        }
     }
 }
