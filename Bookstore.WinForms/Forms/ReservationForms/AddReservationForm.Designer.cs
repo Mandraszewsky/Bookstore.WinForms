@@ -112,6 +112,7 @@ partial class AddReservationForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
+        CancelButton = cancelReservationButton;
         ClientSize = new Size(421, 259);
         Controls.Add(reservationStatusLabel);
         Controls.Add(reservationStatusComboBox);

@@ -37,13 +37,66 @@ public class ReservationService : IReservationService
         return Task.CompletedTask;
     }
 
-    public async Task<Reservation> GetReservation(Guid id)
+    public Task UpdateReservation(Reservation reservation)
+    {
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("UpdateReservation", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@ReservationID", reservation.ReservationID));
+        command.Parameters.Add(new SqlParameter("@ReservationDate", reservation.ReservationDate));
+        command.Parameters.Add(new SqlParameter("@ReservationStatus", reservation.ReservationStatus));
+
+        try
+        {
+            conn.Open();
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public Task CompleteReservation(Guid id, ReservationStatusEnum reservationStatus)
+    {
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("CompleteReservation", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@ReservationID", id));
+        command.Parameters.Add(new SqlParameter("@ReservationStatus", reservationStatus));
+
+        try
+        {
+            conn.Open();
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public async Task<Reservation> GetReservationById(Guid id)
     {
         Reservation reservation = new Reservation();
 
         SqlConnection conn = new SqlConnection(connectionString);
 
-        string querySQL = $"SELECT ReservationID, ReservationDate, CustomerID, CustomerName, EmailAddress FROM GetReservationView WHERE ReservationID = '{id}'";
+        string querySQL = $"SELECT ReservationID, ReservationStatus, ReservationDate, CustomerID, CustomerName, EmailAddress FROM GetReservationView WHERE ReservationID = '{id}'";
 
         try
         {
@@ -57,7 +110,8 @@ public class ReservationService : IReservationService
                 while (dataReader.Read())
                 {
                     reservation.ReservationID = Guid.Parse(dataReader["ReservationID"].ToString()!);
-                    reservation.ReservationDate = DateTime.Now;
+                    reservation.ReservationStatus = (ReservationStatusEnum)Convert.ToInt32(dataReader["ReservationStatus"].ToString());
+                    reservation.ReservationDate = DateTime.Parse(dataReader["ReservationDate"].ToString()!);
                     reservation.CustomerID = Guid.Parse(dataReader["CustomerID"].ToString()!);
                     reservation.CustomerName = dataReader["CustomerName"].ToString();
                     reservation.EmailAddress = dataReader["EmailAddress"].ToString();

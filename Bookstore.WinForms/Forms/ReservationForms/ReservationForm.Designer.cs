@@ -28,22 +28,12 @@ partial class ReservationForm
     /// </summary>
     private void InitializeComponent()
     {
-        removeReservationButton = new Button();
         editReservationButton = new Button();
         addReservationButton = new Button();
         reservationsDataGridView = new DataGridView();
         reservationDetailsButton = new Button();
         ((System.ComponentModel.ISupportInitialize)reservationsDataGridView).BeginInit();
         SuspendLayout();
-        // 
-        // removeReservationButton
-        // 
-        removeReservationButton.Location = new Point(450, 487);
-        removeReservationButton.Name = "removeReservationButton";
-        removeReservationButton.Size = new Size(141, 40);
-        removeReservationButton.TabIndex = 38;
-        removeReservationButton.Text = "Remove reservation";
-        removeReservationButton.UseVisualStyleBackColor = true;
         // 
         // editReservationButton
         // 
@@ -53,6 +43,7 @@ partial class ReservationForm
         editReservationButton.TabIndex = 37;
         editReservationButton.Text = "Edit reservation";
         editReservationButton.UseVisualStyleBackColor = true;
+        editReservationButton.Click += editReservationButton_Click;
         // 
         // addReservationButton
         // 
@@ -74,7 +65,7 @@ partial class ReservationForm
         // 
         // reservationDetailsButton
         // 
-        reservationDetailsButton.Location = new Point(635, 487);
+        reservationDetailsButton.Location = new Point(672, 487);
         reservationDetailsButton.Name = "reservationDetailsButton";
         reservationDetailsButton.Size = new Size(141, 40);
         reservationDetailsButton.TabIndex = 39;
@@ -88,7 +79,6 @@ partial class ReservationForm
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(909, 549);
         Controls.Add(reservationDetailsButton);
-        Controls.Add(removeReservationButton);
         Controls.Add(editReservationButton);
         Controls.Add(addReservationButton);
         Controls.Add(reservationsDataGridView);
@@ -99,8 +89,6 @@ partial class ReservationForm
     }
 
     #endregion
-
-    private Button removeReservationButton;
     private Button editReservationButton;
     private Button addReservationButton;
     private DataGridView reservationsDataGridView;
