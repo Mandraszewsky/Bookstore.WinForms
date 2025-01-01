@@ -83,6 +83,7 @@ partial class AddBookForm
         // 
         // bookPublicationDateDateTimePicker
         // 
+        bookPublicationDateDateTimePicker.Format = DateTimePickerFormat.Short;
         bookPublicationDateDateTimePicker.Location = new Point(155, 215);
         bookPublicationDateDateTimePicker.Name = "bookPublicationDateDateTimePicker";
         bookPublicationDateDateTimePicker.Size = new Size(149, 23);

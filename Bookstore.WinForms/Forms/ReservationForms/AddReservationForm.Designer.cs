@@ -85,6 +85,7 @@ partial class AddReservationForm
         // 
         // reservationDateDateTimePicker
         // 
+        reservationDateDateTimePicker.Format = DateTimePickerFormat.Short;
         reservationDateDateTimePicker.Location = new Point(142, 128);
         reservationDateDateTimePicker.Name = "reservationDateDateTimePicker";
         reservationDateDateTimePicker.Size = new Size(149, 23);
