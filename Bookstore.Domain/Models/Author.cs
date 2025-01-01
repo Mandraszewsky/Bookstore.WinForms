@@ -1,4 +1,4 @@
-﻿namespace Bookstore.Domain.Models;
+﻿namespace Bookstore.DomainLayer.Models;
 
 public class Author
 {

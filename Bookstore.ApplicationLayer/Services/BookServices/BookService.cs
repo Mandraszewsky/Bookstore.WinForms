@@ -1,5 +1,5 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
-using Bookstore.Domain.Models;
+using Bookstore.DomainLayer.Models;
 using Microsoft.Data.SqlClient;
 using System.Data;
 

@@ -1,4 +1,4 @@
-﻿namespace Bookstore.Domain.Enums;
+﻿namespace Bookstore.DomainLayer.Enums;
 
 public enum ReservationStatusEnum
 {

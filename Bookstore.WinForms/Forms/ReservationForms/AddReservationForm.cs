@@ -1,7 +1,7 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
-using Bookstore.Domain.Enums;
-using Bookstore.Domain.Models;
+using Bookstore.DomainLayer.Enums;
+using Bookstore.DomainLayer.Models;
 
 namespace Bookstore.WinForms.Forms.ReservationForms;
 

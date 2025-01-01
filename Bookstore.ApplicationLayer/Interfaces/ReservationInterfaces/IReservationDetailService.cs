@@ -1,4 +1,4 @@
-﻿using Bookstore.Domain.Models;
+﻿using Bookstore.DomainLayer.Models;
 
 namespace Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 

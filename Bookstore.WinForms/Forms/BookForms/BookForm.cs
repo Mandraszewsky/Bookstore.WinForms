@@ -1,6 +1,6 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
-using Bookstore.Domain.Models;
+using Bookstore.DomainLayer.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 

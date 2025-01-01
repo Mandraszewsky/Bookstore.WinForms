@@ -1,5 +1,5 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
-using Bookstore.Domain.Models;
+using Bookstore.DomainLayer.Models;
 using Microsoft.Data.SqlClient;
 
 namespace Bookstore.ApplicationLayer.Services.ReservationServices;

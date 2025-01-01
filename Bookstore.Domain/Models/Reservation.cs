@@ -1,6 +1,6 @@
-﻿using Bookstore.Domain.Enums;
+﻿using Bookstore.DomainLayer.Enums;
 
-namespace Bookstore.Domain.Models;
+namespace Bookstore.DomainLayer.Models;
 
 public class Reservation
 {

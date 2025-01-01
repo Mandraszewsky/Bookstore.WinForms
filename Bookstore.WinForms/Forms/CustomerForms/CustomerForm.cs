@@ -1,5 +1,5 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
-using Bookstore.Domain.Models;
+using Bookstore.DomainLayer.Models;
 
 namespace Bookstore.WinForms.Forms.CustomerForms;
 
