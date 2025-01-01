@@ -1,12 +1,64 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.DomainLayer.Models;
 using Microsoft.Data.SqlClient;
+using System.Data;
 
 namespace Bookstore.ApplicationLayer.Services.ReservationServices;
 
 public class ReservationDetailService : IReservationDetailService
 {
     private readonly string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
+
+    public Task AddBookToReservation(ReservationDetail reservationDetail)
+    {
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("AddBookToReservation", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@ReservationID", reservationDetail.ReservationID));
+        command.Parameters.Add(new SqlParameter("@BookID", reservationDetail.BookID));
+
+        try
+        {
+            conn.Open();
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return Task.CompletedTask;
+    }
+
+    public Task RemoveBookFromReservation(Guid id)
+    {
+        SqlConnection conn = new SqlConnection(connectionString);
+
+        var command = new SqlCommand("RemoveBookFromReservation", conn);
+        command.CommandType = CommandType.StoredProcedure;
+
+        command.Parameters.Add(new SqlParameter("@ReservationDetailID", id));
+
+        try
+        {
+            conn.Open();
+
+            command.ExecuteNonQuery();
+
+            conn.Close();
+        }
+        catch (Exception ex)
+        {
+            throw new Exception(ex.Message);
+        }
+
+        return Task.CompletedTask;
+    }
 
     public List<ReservationDetail> GetReservationDetailsForReservation(Guid id)
     {

@@ -30,6 +30,8 @@ partial class ReservationDetailsForm
     {
         reservationDetailsDataGridView = new DataGridView();
         cancelBookButton = new Button();
+        addReservationBookButton = new Button();
+        removeReservationBookButton = new Button();
         ((System.ComponentModel.ISupportInitialize)reservationDetailsDataGridView).BeginInit();
         SuspendLayout();
         // 
@@ -50,12 +52,34 @@ partial class ReservationDetailsForm
         cancelBookButton.Text = "Cancel";
         cancelBookButton.UseVisualStyleBackColor = true;
         // 
+        // addReservationBookButton
+        // 
+        addReservationBookButton.Location = new Point(42, 375);
+        addReservationBookButton.Name = "addReservationBookButton";
+        addReservationBookButton.Size = new Size(110, 31);
+        addReservationBookButton.TabIndex = 92;
+        addReservationBookButton.Text = "Add book";
+        addReservationBookButton.UseVisualStyleBackColor = true;
+        addReservationBookButton.Click += addReservationBookButton_Click;
+        // 
+        // removeReservationBookButton
+        // 
+        removeReservationBookButton.Location = new Point(182, 375);
+        removeReservationBookButton.Name = "removeReservationBookButton";
+        removeReservationBookButton.Size = new Size(110, 31);
+        removeReservationBookButton.TabIndex = 93;
+        removeReservationBookButton.Text = "Remove book";
+        removeReservationBookButton.UseVisualStyleBackColor = true;
+        removeReservationBookButton.Click += removeReservationBookButton_Click;
+        // 
         // ReservationDetailsForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         CancelButton = cancelBookButton;
         ClientSize = new Size(568, 448);
+        Controls.Add(removeReservationBookButton);
+        Controls.Add(addReservationBookButton);
         Controls.Add(cancelBookButton);
         Controls.Add(reservationDetailsDataGridView);
         Name = "ReservationDetailsForm";
@@ -68,4 +92,6 @@ partial class ReservationDetailsForm
 
     private DataGridView reservationDetailsDataGridView;
     private Button cancelBookButton;
+    private Button addReservationBookButton;
+    private Button removeReservationBookButton;
 }
