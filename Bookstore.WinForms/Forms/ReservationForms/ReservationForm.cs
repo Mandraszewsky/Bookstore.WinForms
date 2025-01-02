@@ -22,17 +22,17 @@ public partial class ReservationForm : Form
 
         InitializeComponent();
         FillReservationsGridView();
-
-        reservationsDataGridView.CustomizeReservationsGridView();
     }
 
-    async void FillReservationsGridView()
+    private async void FillReservationsGridView()
     {
         var reservations = new List<Reservation>();
 
         reservations = await _reservationService.GetReservations();
 
         reservationsDataGridView.DataSource = reservations;
+
+        reservationsDataGridView.CustomizeReservationsGridView();
     }
 
     private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)

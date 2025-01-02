@@ -18,10 +18,10 @@ public class AuthorRepository : IAuthorRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
             var command = new SqlCommand(querySQL, conn);
-            var dataReader = command.ExecuteReader();
+            var dataReader = await command.ExecuteReaderAsync();
 
             if (dataReader != null)
             {
@@ -36,7 +36,7 @@ public class AuthorRepository : IAuthorRepository
                 }
             }
 
-            conn.Close();
+            await conn.CloseAsync();
 
             return authorList;
         }

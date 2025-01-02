@@ -22,8 +22,6 @@ public partial class BookForm : Form
 
         InitializeComponent();
         FillBooksGridView();
-
-        booksDataGridView.CustomizeBooksGridView();
     }
 
     private async void FillBooksGridView()
@@ -32,6 +30,8 @@ public partial class BookForm : Form
 
         bindingSource.DataSource = books;
         booksDataGridView.DataSource = bindingSource;
+
+        booksDataGridView.CustomizeBooksGridView();
     }
 
     private void BooksForm_Activated(object sender, EventArgs e)
@@ -60,7 +60,7 @@ public partial class BookForm : Form
         editBookForm.ShowDialog();
     }
 
-    private void removeBookButton_Click(object sender, EventArgs e)
+    private async void removeBookButton_Click(object sender, EventArgs e)
     {
         var bookId = (Guid)booksDataGridView.CurrentRow.Cells[0].Value;
         var bookTitle = (string)booksDataGridView.CurrentRow.Cells[2].Value;
@@ -69,7 +69,7 @@ public partial class BookForm : Form
 
         if (result == DialogResult.Yes)
         {
-            _bookService.DeleteBook(bookId);
+            await _bookService.DeleteBook(bookId);
 
             FillBooksGridView();
         }

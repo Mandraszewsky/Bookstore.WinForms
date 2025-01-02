@@ -19,11 +19,11 @@ public partial class EditReservationForm : Form
         FillReservationData();
     }
 
-    void FillReservationData()
+    private async void FillReservationData()
     {
         var reservation = new Reservation();
 
-        reservation = _reservationService.GetReservationById(reservationId).Result;
+        reservation = await _reservationService.GetReservationById(reservationId);
 
         reservationDateDateTimePicker.Value = Convert.ToDateTime(reservation.ReservationDate);
 

@@ -14,8 +14,6 @@ public partial class CustomerForm : Form
 
         InitializeComponent();
         FillCustomersGridView();
-
-        customersDataGridView.CustomizeCustomersGridView();
     }
 
     private async void FillCustomersGridView()
@@ -25,5 +23,7 @@ public partial class CustomerForm : Form
         customers = await _customerService.GetCustomerList();
 
         customersDataGridView.DataSource = customers;
+
+        customersDataGridView.CustomizeCustomersGridView();
     }
 }

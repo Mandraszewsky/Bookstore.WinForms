@@ -9,7 +9,7 @@ public class BookRepository : IBookRepository
 {
     private readonly string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
 
-    public Task CreateBook(Book book)
+    public async Task CreateBook(Book book)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -26,21 +26,19 @@ public class BookRepository : IBookRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
-
-        return Task.CompletedTask;
     }
 
-    public Task UpdateBook(Book book)
+    public async Task UpdateBook(Book book)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -57,21 +55,19 @@ public class BookRepository : IBookRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
-
-        return Task.CompletedTask;
     }
 
-    public Task DeleteBook(Guid id)
+    public async Task DeleteBook(Guid id)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -82,18 +78,16 @@ public class BookRepository : IBookRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
-
-        return Task.CompletedTask;
     }
 
     public async Task<Book> GetBookById(Guid id)
@@ -106,10 +100,10 @@ public class BookRepository : IBookRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
             var command = new SqlCommand(querySQL, conn);
-            var dataReader = command.ExecuteReader();
+            var dataReader = await command.ExecuteReaderAsync();
 
             if (dataReader != null)
             {
@@ -126,7 +120,7 @@ public class BookRepository : IBookRepository
                 }
             }
 
-            conn.Close();
+            await conn.CloseAsync();
 
             return book;
         }
@@ -146,10 +140,10 @@ public class BookRepository : IBookRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
             var command = new SqlCommand(querySQL, conn);
-            var dataReader = command.ExecuteReader();
+            var dataReader = await command.ExecuteReaderAsync();
 
             if (dataReader != null)
             {
@@ -170,7 +164,7 @@ public class BookRepository : IBookRepository
                 }
             }
 
-            conn.Close();
+            await conn.CloseAsync();
 
             return bookList;
         }

@@ -33,7 +33,7 @@ public partial class AddBookForm : Form
         bookAuthorComboBox.SelectedIndex = 0;
     }
 
-    private void addBookButton_Click(object sender, EventArgs e)
+    private async void addBookButton_Click(object sender, EventArgs e)
     {
         var book = new Book
         {
@@ -56,7 +56,7 @@ public partial class AddBookForm : Form
         }
         else
         {
-            _bookService.CreateBook(book);
+            await _bookService.CreateBook(book);
             this.Close();
         }
     }

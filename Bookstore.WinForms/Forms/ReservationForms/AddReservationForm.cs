@@ -45,7 +45,7 @@ public partial class AddReservationForm : Form
         reservationStatusComboBox.SelectedIndex = 0;
     }
 
-    private void addReservationButton_Click(object sender, EventArgs e)
+    private async void addReservationButton_Click(object sender, EventArgs e)
     {
         var reservation = new Reservation
         {
@@ -54,7 +54,7 @@ public partial class AddReservationForm : Form
             ReservationDate = reservationDateDateTimePicker.Value,
         };
 
-        _reservationService.CreateReservation(reservation);
+        await _reservationService.CreateReservation(reservation);
 
         this.Close();
     }

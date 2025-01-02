@@ -26,7 +26,7 @@ public partial class EditBookForm : Form
         var book = new Book();
         var authors = new List<Author>();
 
-        book = _bookService.GetBookById(bookId).Result;
+        book = await _bookService.GetBookById(bookId);
         authors = await _authorService.GetAuthorList();
 
         bookISBNTextBox.Text = book.ISBN;
@@ -45,7 +45,7 @@ public partial class EditBookForm : Form
         }
     }
 
-    private void updateBookButton_Click(object sender, EventArgs e)
+    private async void updateBookButton_Click(object sender, EventArgs e)
     {
         var book = new Book
         {
@@ -69,7 +69,7 @@ public partial class EditBookForm : Form
         }
         else
         {
-            _bookService.UpdateBook(book);
+            await _bookService.UpdateBook(book);
             this.Close();
         }
     }

@@ -10,7 +10,7 @@ public class ReservationRepository : IReservationRepository
 {
     private readonly string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
 
-    public Task CreateReservation(Reservation reservation)
+    public async Task CreateReservation(Reservation reservation)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -23,21 +23,19 @@ public class ReservationRepository : IReservationRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
-
-        return Task.CompletedTask;
     }
 
-    public Task UpdateReservation(Reservation reservation)
+    public async Task UpdateReservation(Reservation reservation)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -50,21 +48,19 @@ public class ReservationRepository : IReservationRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
-
-        return Task.CompletedTask;
     }
 
-    public Task CompleteReservation(Guid id, ReservationStatusEnum reservationStatus)
+    public async Task CompleteReservation(Guid id, ReservationStatusEnum reservationStatus)
     {
         SqlConnection conn = new SqlConnection(connectionString);
 
@@ -76,18 +72,16 @@ public class ReservationRepository : IReservationRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
-            command.ExecuteNonQuery();
+            await command.ExecuteNonQueryAsync();
 
-            conn.Close();
+            await conn.CloseAsync();
         }
         catch (Exception ex)
         {
             throw new Exception(ex.Message);
         }
-
-        return Task.CompletedTask;
     }
 
     public async Task<Reservation> GetReservationById(Guid id)
@@ -100,10 +94,10 @@ public class ReservationRepository : IReservationRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
             var command = new SqlCommand(querySQL, conn);
-            var dataReader = command.ExecuteReader();
+            var dataReader = await command.ExecuteReaderAsync();
 
             if (dataReader != null)
             {
@@ -118,7 +112,7 @@ public class ReservationRepository : IReservationRepository
                 }
             }
 
-            conn.Close();
+            await conn.CloseAsync();
 
             return reservation;
         }
@@ -138,10 +132,10 @@ public class ReservationRepository : IReservationRepository
 
         try
         {
-            conn.Open();
+            await conn.OpenAsync();
 
             var command = new SqlCommand(querySQL, conn);
-            var dataReader = command.ExecuteReader();
+            var dataReader = await command.ExecuteReaderAsync();
 
             if (dataReader != null)
             {
@@ -160,7 +154,7 @@ public class ReservationRepository : IReservationRepository
                 }
             }
 
-            conn.Close();
+            await conn.CloseAsync();
 
             return reservationList;
         }

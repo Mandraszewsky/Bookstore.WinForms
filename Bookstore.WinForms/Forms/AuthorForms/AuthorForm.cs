@@ -14,8 +14,6 @@ public partial class AuthorForm : Form
 
         InitializeComponent();
         FillAuthorsGridView();
-
-        authorsDataGridView.CustomizeAuthorsGridView();
     }
 
     private async void FillAuthorsGridView()
@@ -25,5 +23,7 @@ public partial class AuthorForm : Form
         authors = await _authorService.GetAuthorList();
 
         authorsDataGridView.DataSource = authors;
+
+        authorsDataGridView.CustomizeAuthorsGridView();
     }
 }
