@@ -23,7 +23,7 @@ public class BookRepository : IBookRepository
         command.Parameters.Add(new SqlParameter("@AuthorName", book.AuthorName));
         command.Parameters.Add(new SqlParameter("@PagesNumber", book.PagesNumber));
         command.Parameters.Add(new SqlParameter("@Quantity", book.Quantity));
-        command.Parameters.Add(new SqlParameter("PublicationDate", book.PublicationDate));
+        command.Parameters.Add(new SqlParameter("@PublicationDate", book.PublicationDate));
 
         try
         {
@@ -52,7 +52,7 @@ public class BookRepository : IBookRepository
         command.Parameters.Add(new SqlParameter("@Description", book.Description));
         command.Parameters.Add(new SqlParameter("@PagesNumber", book.PagesNumber));
         command.Parameters.Add(new SqlParameter("@Quantity", book.Quantity));
-        command.Parameters.Add(new SqlParameter("PublicationDate", book.PublicationDate));
+        command.Parameters.Add(new SqlParameter("@PublicationDate", book.PublicationDate));
 
         try
         {
@@ -97,7 +97,7 @@ public class BookRepository : IBookRepository
 
         SqlConnection conn = new SqlConnection(connectionString);
 
-        string querySQL = $"SELECT BookId, ISBN, Title, Description, PagesNumber, Quantity, AuthorName FROM GetBooksWithAuthorsView WHERE BookId = '{id}'";
+        string querySQL = $"SELECT BookId, ISBN, Title, Description, PagesNumber, Quantity, PublicationDate, AuthorName FROM GetBooksWithAuthorsView WHERE BookId = '{id}'";
 
         try
         {
@@ -117,7 +117,7 @@ public class BookRepository : IBookRepository
                     book.AuthorName = dataReader["AuthorName"].ToString();
                     book.PagesNumber = Convert.ToInt32(dataReader["PagesNumber"]);
                     book.Quantity = Convert.ToInt32(dataReader["Quantity"]);
-                    book.PublicationDate = DateTime.Now;
+                    book.PublicationDate = DateTime.Parse(dataReader["PublicationDate"].ToString()!);
                 }
             }
 

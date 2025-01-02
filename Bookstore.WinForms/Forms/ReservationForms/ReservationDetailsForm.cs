@@ -29,7 +29,7 @@ public partial class ReservationDetailsForm : Form
 
         reservationDetailsDataGridView.DataSource = reservationDetails;
 
-        //reservationDetailsDataGridView.CustomizeReservationDetailsGridView();
+        reservationDetailsDataGridView.CustomizeReservationDetailsGridView();
     }
 
     private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)

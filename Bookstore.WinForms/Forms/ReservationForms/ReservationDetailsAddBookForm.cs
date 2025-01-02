@@ -32,7 +32,7 @@ public partial class ReservationDetailsAddBookForm : Form
         reservationBooksDataGridView.DataSource = reservationBindingSource;
     }
 
-    private void addBookToReservationButton_Click(object sender, EventArgs e)
+    private async void addBookToReservationButton_Click(object sender, EventArgs e)
     {
         var bookId = (Guid)reservationBooksDataGridView.CurrentRow.Cells[0].Value;
 
@@ -42,7 +42,7 @@ public partial class ReservationDetailsAddBookForm : Form
             BookID = bookId
         };
 
-        _reservationDetailService.AddBookToReservation(reservationDetail);
+        await _reservationDetailService.AddBookToReservation(reservationDetail);
 
         this.Close();
     }
