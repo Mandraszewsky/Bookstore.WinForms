@@ -1,6 +1,7 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.DomainLayer.Models;
+using Bookstore.WinForms.Extensions.CustomizeFormViewExtensions;
 
 namespace Bookstore.WinForms.Forms.ReservationForms;
 
@@ -27,6 +28,8 @@ public partial class ReservationDetailsForm : Form
         reservationDetails = await _reservationDetailService.GetReservationDetailsForReservation(reservationId);
 
         reservationDetailsDataGridView.DataSource = reservationDetails;
+
+        reservationDetailsDataGridView.CustomizeReservationDetailsGridView();
     }
 
     private void ChildForm_FormClosed(object sender, FormClosedEventArgs e)
