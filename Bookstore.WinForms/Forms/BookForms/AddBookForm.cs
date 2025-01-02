@@ -35,6 +35,17 @@ public partial class AddBookForm : Form
 
     private async void addBookButton_Click(object sender, EventArgs e)
     {
+        // //////////// quantity and pages should be as string in Book entity to better fluent validation (just note for future)
+        var intQuantityParser = int.TryParse(bookQuantityTextBox.Text?.ToString(), out _);
+        var intPagesNumberParser = int.TryParse(bookPageNumberTextBox.Text?.ToString(), out _);
+
+        if (!intQuantityParser || !intPagesNumberParser)
+        {
+            MessageBox.Show("Quantity & Pages must be convertible to an integer.", "Validation error!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            return;
+        }
+        // ////////////
+
         var book = new Book
         {
             ISBN = bookISBNTextBox.Text,

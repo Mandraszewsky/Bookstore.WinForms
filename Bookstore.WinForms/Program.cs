@@ -43,6 +43,7 @@ internal static class Program
 
         services.AddScoped<IBookRepository, BookRepository>();
         services.AddScoped<IReservationRepository, ReservationRepository>();
+        services.AddScoped<IReservationDetailRepository, ReservationDetailRepository>();
         services.AddScoped<IAuthorRepository, AuthorRepository>();
         services.AddScoped<ICustomerRepository, CustomerRepository>();
 

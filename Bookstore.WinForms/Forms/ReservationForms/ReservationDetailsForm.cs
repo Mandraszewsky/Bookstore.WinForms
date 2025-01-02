@@ -20,11 +20,11 @@ public partial class ReservationDetailsForm : Form
         FillReservationDetailsGridView();
     }
 
-    void FillReservationDetailsGridView()
+    private async void FillReservationDetailsGridView()
     {
         var reservationDetails = new List<ReservationDetail>();
 
-        reservationDetails = _reservationDetailService.GetReservationDetailsForReservation(reservationId);
+        reservationDetails = await _reservationDetailService.GetReservationDetailsForReservation(reservationId);
 
         reservationDetailsDataGridView.DataSource = reservationDetails;
     }

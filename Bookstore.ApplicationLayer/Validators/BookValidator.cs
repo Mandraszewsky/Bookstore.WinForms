@@ -20,10 +20,12 @@ public class BookValidator : AbstractValidator<Book>
             .MaximumLength(50).WithMessage("Description must be a maximum of 50 characters.");
 
         RuleFor(book => book.PagesNumber)
-            .NotEmpty().WithMessage("Pages number is required.");
+            .NotEmpty().WithMessage("Pages number is required.")
+            .Must(value => value is int).WithMessage("Quantity must be of type int.");
 
         RuleFor(book => book.Quantity)
-            .NotEmpty().WithMessage("Quantity is required.");
+            .NotEmpty().WithMessage("Quantity is required.")
+            .Must(value => value is int).WithMessage("Quantity must be of type int.");
 
         RuleFor(book => book.PublicationDate)
             .NotEmpty().WithMessage("Publication date is required.");
