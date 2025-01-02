@@ -17,7 +17,7 @@ public class BookValidator : AbstractValidator<Book>
 
         RuleFor(book => book.Description)
             .NotEmpty().WithMessage("Description is required.")
-            .Length(13).WithMessage("Description must be a maximum of 50 characters.");
+            .MaximumLength(50).WithMessage("Description must be a maximum of 50 characters.");
 
         RuleFor(book => book.PagesNumber)
             .NotEmpty().WithMessage("Pages number is required.");

@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Bookstore.Domain\Bookstore.DomainLayer.csproj" />
+    <ProjectReference Include="..\Bookstore.DomainLayer\Bookstore.DomainLayer.csproj" />
   </ItemGroup>
 
 </Project>
