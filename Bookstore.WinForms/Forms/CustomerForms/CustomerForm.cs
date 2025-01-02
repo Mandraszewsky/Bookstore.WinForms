@@ -1,5 +1,6 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
 using Bookstore.DomainLayer.Models;
+using Bookstore.WinForms.Extensions.CustomizeFormViewExtensions;
 
 namespace Bookstore.WinForms.Forms.CustomerForms;
 
@@ -13,6 +14,8 @@ public partial class CustomerForm : Form
 
         InitializeComponent();
         FillCustomersGridView();
+
+        customersDataGridView.CustomizeCustomersGridView();
     }
 
     void FillCustomersGridView()

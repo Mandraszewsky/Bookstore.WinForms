@@ -2,6 +2,7 @@
 using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.DomainLayer.Models;
+using Bookstore.WinForms.Extensions.CustomizeFormViewExtensions;
 
 namespace Bookstore.WinForms.Forms.ReservationForms;
 
@@ -21,6 +22,8 @@ public partial class ReservationForm : Form
 
         InitializeComponent();
         FillReservationsGridView();
+
+        reservationsDataGridView.CustomizeReservationsGridView();
     }
 
     void FillReservationsGridView()

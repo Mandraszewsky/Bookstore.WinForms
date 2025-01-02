@@ -1,33 +1,18 @@
-using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
-using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
-using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
-using Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 using Bookstore.WinForms.Forms.AuthorForms;
 using Bookstore.WinForms.Forms.BookForms;
 using Bookstore.WinForms.Forms.CustomerForms;
 using Bookstore.WinForms.Forms.ReservationForms;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookstore.WinForms;
 
 public partial class MainForm : Form
 {
-    private readonly IBookService _bookService;
-    private readonly IAuthorService _authorService;
-    private readonly ICustomerService _customerService;
-    private readonly IReservationService _reservationService;
-    private readonly IReservationDetailService _reservationDetailService;
-
     private Button currentButton;
     private Form activeForm;
 
-    public MainForm(IBookService bookService, IAuthorService authorService, ICustomerService customerService, IReservationService reservationService, IReservationDetailService reservationDetailService)
+    public MainForm()
     {
-        _bookService = bookService;
-        _authorService = authorService;
-        _customerService = customerService;
-        _reservationService = reservationService;
-        _reservationDetailService = reservationDetailService;
-
         currentButton = new Button();
         activeForm = new Form();
 
@@ -84,25 +69,25 @@ public partial class MainForm : Form
 
     private void booksButton_Click(object sender, EventArgs e)
     {
-        BookForm bookForm = new BookForm(_bookService, _authorService);
+        BookForm bookForm = Program.ServiceProvider!.GetRequiredService<BookForm>();
         OpenChildForm(bookForm, sender, e);
     }
 
     private void reservationsButton_Click(object sender, EventArgs e)
     {
-        ReservationForm reservationForm = new ReservationForm(_reservationService, _reservationDetailService, _bookService, _customerService);
+        ReservationForm reservationForm = Program.ServiceProvider!.GetRequiredService<ReservationForm>();
         OpenChildForm(reservationForm, sender, e);
     }
 
     private void authorsButton_Click(object sender, EventArgs e)
     {
-        AuthorForm authorForm = new AuthorForm(_authorService);
+        AuthorForm authorForm = Program.ServiceProvider!.GetRequiredService<AuthorForm>();
         OpenChildForm(authorForm, sender, e);
     }
 
     private void cutomersButton_Click(object sender, EventArgs e)
     {
-        CustomerForm customerForm = new CustomerForm(_customerService);
+        CustomerForm customerForm = Program.ServiceProvider!.GetRequiredService<CustomerForm>();
         OpenChildForm(customerForm, sender, e);
     }
 }

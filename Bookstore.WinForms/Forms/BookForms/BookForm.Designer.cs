@@ -82,6 +82,7 @@ partial class BookForm
         booksDataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
         booksDataGridView.Location = new Point(95, 115);
         booksDataGridView.Name = "booksDataGridView";
+        booksDataGridView.ReadOnly = true;
         booksDataGridView.Size = new Size(718, 342);
         booksDataGridView.TabIndex = 31;
         // 

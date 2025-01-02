@@ -6,6 +6,10 @@ using Bookstore.ApplicationLayer.Services.AuthorServices;
 using Bookstore.ApplicationLayer.Services.BookServices;
 using Bookstore.ApplicationLayer.Services.CustomerServices;
 using Bookstore.ApplicationLayer.Services.ReservationServices;
+using Bookstore.WinForms.Forms.AuthorForms;
+using Bookstore.WinForms.Forms.BookForms;
+using Bookstore.WinForms.Forms.CustomerForms;
+using Bookstore.WinForms.Forms.ReservationForms;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Bookstore.WinForms;
@@ -19,15 +23,12 @@ internal static class Program
     {
         var services = new ServiceCollection();
         ConfigureServices(services);
+
         ServiceProvider = services.BuildServiceProvider();
 
         ApplicationConfiguration.Initialize();
 
-        //var booksService = services.BuildServiceProvider().GetRequiredService<IBookService>();
-        //var authorService = services.BuildServiceProvider().GetRequiredService<IAuthorService>();
-
         var booksForm = ServiceProvider.GetRequiredService<MainForm>();
-
         Application.Run(booksForm);
     }
 
@@ -39,6 +40,10 @@ internal static class Program
         services.AddScoped<IReservationService, ReservationService>();
         services.AddScoped<IReservationDetailService, ReservationDetailService>();
 
-        services.AddScoped<MainForm>();
+        services.AddTransient<MainForm>();
+        services.AddTransient<ReservationForm>();
+        services.AddTransient<BookForm>();
+        services.AddTransient<AuthorForm>();
+        services.AddTransient<CustomerForm>();
     }
 }

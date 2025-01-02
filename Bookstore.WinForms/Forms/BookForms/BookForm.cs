@@ -1,6 +1,7 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 using Bookstore.DomainLayer.Models;
+using Bookstore.WinForms.Extensions.CustomizeFormViews;
 using Microsoft.IdentityModel.Tokens;
 using System.Data;
 
@@ -21,6 +22,8 @@ public partial class BookForm : Form
 
         InitializeComponent();
         FillBooksGridView();
+
+        booksDataGridView.CustomizeBooksGridView();
     }
 
     void FillBooksGridView()

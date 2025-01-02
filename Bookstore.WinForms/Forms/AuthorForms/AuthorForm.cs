@@ -1,5 +1,6 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 using Bookstore.DomainLayer.Models;
+using Bookstore.WinForms.Extensions.CustomizeFormViewExtensions;
 
 namespace Bookstore.WinForms.Forms.AuthorForms;
 
@@ -13,6 +14,8 @@ public partial class AuthorForm : Form
 
         InitializeComponent();
         FillAuthorsGridView();
+
+        authorsDataGridView.CustomizeAuthorsGridView();
     }
 
     void FillAuthorsGridView()
