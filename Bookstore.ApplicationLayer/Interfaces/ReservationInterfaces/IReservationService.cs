@@ -5,7 +5,7 @@ namespace Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 
 public interface IReservationService
 {
-    Task<List<Reservation>> GetReservations();
+    Task<List<Reservation>> GetReservationList();
     Task<Reservation> GetReservationById(Guid id);
     Task CreateReservation(Reservation reservation);
     Task UpdateReservation(Reservation reservation);

@@ -33,8 +33,8 @@ public class ReservationService : IReservationService
         return await _reservationRepository.GetReservationById(id);
     }
 
-    public async Task<List<Reservation>> GetReservations()
+    public async Task<List<Reservation>> GetReservationList()
     {
-        return await _reservationRepository.GetReservations();
+        return await _reservationRepository.GetReservationList();
     }
 }

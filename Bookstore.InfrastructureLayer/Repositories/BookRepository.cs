@@ -130,7 +130,7 @@ public class BookRepository : IBookRepository
         }
     }
 
-    public async Task<List<Book>> GetBooksAsync()
+    public async Task<List<Book>> GetBookList()
     {
         List<Book> bookList = new List<Book>();
 

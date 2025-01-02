@@ -122,7 +122,7 @@ public class ReservationRepository : IReservationRepository
         }
     }
 
-    public async Task<List<Reservation>> GetReservations()
+    public async Task<List<Reservation>> GetReservationList()
     {
         List<Reservation> reservationList = new List<Reservation>();
 

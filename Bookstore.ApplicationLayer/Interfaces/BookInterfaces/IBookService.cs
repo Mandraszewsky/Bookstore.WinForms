@@ -4,7 +4,7 @@ namespace Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 
 public interface IBookService
 {
-    Task<List<Book>> GetBooksAsync();
+    Task<List<Book>> GetBookList();
     Task<Book> GetBookById(Guid id);
     Task CreateBook(Book book);
     Task UpdateBook(Book book);

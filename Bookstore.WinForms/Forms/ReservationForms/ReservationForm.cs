@@ -28,7 +28,7 @@ public partial class ReservationForm : Form
     {
         var reservations = new List<Reservation>();
 
-        reservations = await _reservationService.GetReservations();
+        reservations = await _reservationService.GetReservationList();
 
         reservationsDataGridView.DataSource = reservations;
 

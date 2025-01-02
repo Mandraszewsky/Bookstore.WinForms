@@ -26,7 +26,7 @@ public partial class BookForm : Form
 
     private async void FillBooksGridView()
     {
-        books = await _bookService.GetBooksAsync();
+        books = await _bookService.GetBookList();
 
         bindingSource.DataSource = books;
         booksDataGridView.DataSource = bindingSource;
