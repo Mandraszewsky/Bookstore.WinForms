@@ -1,5 +1,6 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 using Bookstore.DomainLayer.Models;
+using Bookstore.InfrastructureLayer.Data;
 using Microsoft.Data.SqlClient;
 using System.Data;
 
@@ -7,7 +8,7 @@ namespace Bookstore.InfrastructureLayer.Repositories;
 
 public class BookRepository : IBookRepository
 {
-    private readonly string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
+    private readonly string connectionString = DatabaseConfig.ConnectionString;
 
     public async Task CreateBook(Book book)
     {
