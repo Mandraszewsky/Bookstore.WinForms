@@ -107,7 +107,7 @@ public partial class BookForm : Form
             bindingSource.DataSource = filterList;
     }
 
-    private void bookFilterDateTimePicker_ValueChanged(object sender, EventArgs e)
+    private void applayDateBookFilterButton_Click(object sender, EventArgs e)
     {
         var filterList = bindingSource.DataSource as List<Book>;
 

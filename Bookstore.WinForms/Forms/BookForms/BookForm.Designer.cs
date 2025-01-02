@@ -41,6 +41,7 @@ partial class BookForm
         bookSearchFromLabel = new Label();
         bookSearchToLabel = new Label();
         resetBookFilterButton = new Button();
+        applayDateBookFilterButton = new Button();
         ((System.ComponentModel.ISupportInitialize)booksDataGridView).BeginInit();
         SuspendLayout();
         // 
@@ -128,7 +129,6 @@ partial class BookForm
         bookSearchFromDateTimePicker.Size = new Size(149, 23);
         bookSearchFromDateTimePicker.TabIndex = 97;
         bookSearchFromDateTimePicker.Value = new DateTime(2025, 1, 1, 0, 0, 0, 0);
-        bookSearchFromDateTimePicker.ValueChanged += bookFilterDateTimePicker_ValueChanged;
         // 
         // bookSearchToDateTimePicker
         // 
@@ -137,7 +137,6 @@ partial class BookForm
         bookSearchToDateTimePicker.Name = "bookSearchToDateTimePicker";
         bookSearchToDateTimePicker.Size = new Size(149, 23);
         bookSearchToDateTimePicker.TabIndex = 98;
-        bookSearchToDateTimePicker.ValueChanged += bookFilterDateTimePicker_ValueChanged;
         // 
         // bookSearchFromLabel
         // 
@@ -159,19 +158,30 @@ partial class BookForm
         // 
         // resetBookFilterButton
         // 
-        resetBookFilterButton.Location = new Point(536, 71);
+        resetBookFilterButton.Location = new Point(564, 71);
         resetBookFilterButton.Name = "resetBookFilterButton";
-        resetBookFilterButton.Size = new Size(142, 29);
+        resetBookFilterButton.Size = new Size(114, 29);
         resetBookFilterButton.TabIndex = 101;
         resetBookFilterButton.Text = "Reset filters";
         resetBookFilterButton.UseVisualStyleBackColor = true;
         resetBookFilterButton.Click += resetBookFilterButton_Click;
+        // 
+        // applayDateBookFilterButton
+        // 
+        applayDateBookFilterButton.Location = new Point(444, 71);
+        applayDateBookFilterButton.Name = "applayDateBookFilterButton";
+        applayDateBookFilterButton.Size = new Size(114, 29);
+        applayDateBookFilterButton.TabIndex = 102;
+        applayDateBookFilterButton.Text = "Applay date";
+        applayDateBookFilterButton.UseVisualStyleBackColor = true;
+        applayDateBookFilterButton.Click += applayDateBookFilterButton_Click;
         // 
         // BookForm
         // 
         AutoScaleDimensions = new SizeF(7F, 15F);
         AutoScaleMode = AutoScaleMode.Font;
         ClientSize = new Size(909, 549);
+        Controls.Add(applayDateBookFilterButton);
         Controls.Add(resetBookFilterButton);
         Controls.Add(bookSearchToLabel);
         Controls.Add(bookSearchFromLabel);
@@ -209,4 +219,5 @@ partial class BookForm
     private Label bookSearchFromLabel;
     private Label bookSearchToLabel;
     private Button resetBookFilterButton;
+    private Button applayDateBookFilterButton;
 }
