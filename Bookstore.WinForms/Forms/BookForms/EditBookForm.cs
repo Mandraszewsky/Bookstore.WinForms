@@ -21,13 +21,13 @@ public partial class EditBookForm : Form
         FillBookData();
     }
 
-    void FillBookData()
+    private async void FillBookData()
     {
         var book = new Book();
         var authors = new List<Author>();
 
         book = _bookService.GetBookById(bookId).Result;
-        authors = _authorService.GetAuthorList();
+        authors = await _authorService.GetAuthorList();
 
         bookISBNTextBox.Text = book.ISBN;
         bookTitleTextBox.Text = book.Title;

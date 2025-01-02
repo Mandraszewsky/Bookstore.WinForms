@@ -18,11 +18,11 @@ public partial class AuthorForm : Form
         authorsDataGridView.CustomizeAuthorsGridView();
     }
 
-    void FillAuthorsGridView()
+    private async void FillAuthorsGridView()
     {
         var authors = new List<Author>();
 
-        authors = _authorService.GetAuthorList();
+        authors = await _authorService.GetAuthorList();
 
         authorsDataGridView.DataSource = authors;
     }

@@ -2,7 +2,7 @@
 
 namespace Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
 
-public interface ICustomerService
+public interface ICustomerRepository
 {
-    Task <List<Customer>> GetCustomerList();
+    Task<List<Customer>> GetCustomerList();
 }

@@ -3,7 +3,7 @@ using Bookstore.DomainLayer.Models;
 
 namespace Bookstore.ApplicationLayer.Interfaces.ReservationInterfaces;
 
-public interface IReservationService
+public interface IReservationRepository
 {
     Task<List<Reservation>> GetReservations();
     Task<Reservation> GetReservationById(Guid id);

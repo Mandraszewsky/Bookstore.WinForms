@@ -2,7 +2,7 @@
 
 namespace Bookstore.ApplicationLayer.Interfaces.BookInterfaces;
 
-public interface IBookService
+public interface IBookRepository
 {
     Task<List<Book>> GetBooksAsync();
     Task<Book> GetBookById(Guid id);
@@ -10,4 +10,3 @@ public interface IBookService
     Task UpdateBook(Book book);
     Task DeleteBook(Guid id);
 }
-

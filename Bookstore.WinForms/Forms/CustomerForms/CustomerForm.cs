@@ -18,11 +18,11 @@ public partial class CustomerForm : Form
         customersDataGridView.CustomizeCustomersGridView();
     }
 
-    void FillCustomersGridView()
+    private async void FillCustomersGridView()
     {
         var customers = new List<Customer>();
 
-        customers = _customerService.GetCustomerList();
+        customers = await _customerService.GetCustomerList();
 
         customersDataGridView.DataSource = customers;
     }

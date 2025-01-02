@@ -6,6 +6,7 @@ using Bookstore.ApplicationLayer.Services.AuthorServices;
 using Bookstore.ApplicationLayer.Services.BookServices;
 using Bookstore.ApplicationLayer.Services.CustomerServices;
 using Bookstore.ApplicationLayer.Services.ReservationServices;
+using Bookstore.InfrastructureLayer.Repositories;
 using Bookstore.WinForms.Forms.AuthorForms;
 using Bookstore.WinForms.Forms.BookForms;
 using Bookstore.WinForms.Forms.CustomerForms;
@@ -39,6 +40,11 @@ internal static class Program
         services.AddScoped<ICustomerService, CustomerService>();
         services.AddScoped<IReservationService, ReservationService>();
         services.AddScoped<IReservationDetailService, ReservationDetailService>();
+
+        services.AddScoped<IBookRepository, BookRepository>();
+        services.AddScoped<IReservationRepository, ReservationRepository>();
+        services.AddScoped<IAuthorRepository, AuthorRepository>();
+        services.AddScoped<ICustomerRepository, CustomerRepository>();
 
         services.AddTransient<MainForm>();
         services.AddTransient<ReservationForm>();

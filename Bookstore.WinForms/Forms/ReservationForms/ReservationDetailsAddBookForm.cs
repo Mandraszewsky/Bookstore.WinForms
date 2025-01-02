@@ -24,9 +24,9 @@ public partial class ReservationDetailsAddBookForm : Form
         FillReservationDetailsGridView();
     }
 
-    void FillReservationDetailsGridView()
+    async void FillReservationDetailsGridView()
     {
-        reservationBooks = _bookService.GetBooksAsync();
+        reservationBooks = await _bookService.GetBooksAsync();
 
         reservationBindingSource.DataSource = reservationBooks;
         reservationBooksDataGridView.DataSource = reservationBindingSource;

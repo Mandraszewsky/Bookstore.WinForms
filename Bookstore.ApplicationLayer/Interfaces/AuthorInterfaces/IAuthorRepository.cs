@@ -2,7 +2,7 @@
 
 namespace Bookstore.ApplicationLayer.Interfaces.AuthorInterfaces;
 
-public interface IAuthorService
+public interface IAuthorRepository
 {
     Task<List<Author>> GetAuthorList();
 }

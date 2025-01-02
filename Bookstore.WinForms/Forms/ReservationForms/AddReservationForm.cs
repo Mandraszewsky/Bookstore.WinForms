@@ -21,11 +21,11 @@ public partial class AddReservationForm : Form
         FillReservationStatusComboBox();
     }
 
-    private void FillCustomerComboBox()
+    private async void FillCustomerComboBox()
     {
         var customers = new List<Customer>();
 
-        customers = _customerService.GetCustomerList();
+        customers = await _customerService.GetCustomerList();
 
         foreach (var customer in customers)
         {

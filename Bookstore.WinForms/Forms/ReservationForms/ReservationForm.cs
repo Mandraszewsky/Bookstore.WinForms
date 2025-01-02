@@ -26,11 +26,11 @@ public partial class ReservationForm : Form
         reservationsDataGridView.CustomizeReservationsGridView();
     }
 
-    void FillReservationsGridView()
+    async void FillReservationsGridView()
     {
         var reservations = new List<Reservation>();
 
-        reservations = _reservationService.GetReservations();
+        reservations = await _reservationService.GetReservations();
 
         reservationsDataGridView.DataSource = reservations;
     }

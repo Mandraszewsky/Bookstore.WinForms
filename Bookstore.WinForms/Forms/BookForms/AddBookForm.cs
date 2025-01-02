@@ -19,11 +19,11 @@ public partial class AddBookForm : Form
         FillAuthorComboBox();
     }
 
-    private void FillAuthorComboBox()
+    private async void FillAuthorComboBox()
     {
         var authors = new List<Author>();
 
-        authors = _authorService.GetAuthorList();
+        authors = await _authorService.GetAuthorList();
 
         foreach (var author in authors)
         {

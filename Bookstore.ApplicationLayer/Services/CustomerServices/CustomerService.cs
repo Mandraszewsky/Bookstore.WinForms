@@ -1,49 +1,19 @@
 ﻿using Bookstore.ApplicationLayer.Interfaces.CustomerInterfaces;
 using Bookstore.DomainLayer.Models;
-using Microsoft.Data.SqlClient;
 
 namespace Bookstore.ApplicationLayer.Services.CustomerServices;
 
 public class CustomerService : ICustomerService
 {
-    private readonly string connectionString = @"Data Source=DESKTOP-I57J3OL;Initial Catalog=BookstoreDB;User Id=sa;Password=sa1234;Integrated Security=True;MultipleActiveResultSets=true;TrustServerCertificate=True;";
+    private readonly ICustomerRepository _customerRepository;
 
-    public List<Customer> GetCustomerList()
+    public CustomerService(ICustomerRepository customerRepository)
     {
-        var customerList = new List<Customer>();
+        _customerRepository = customerRepository;
+    }
 
-        SqlConnection conn = new SqlConnection(connectionString);
-
-        string querySQL = "SELECT CustomerID, CustomerName, EmailAddress FROM Customers ORDER BY CustomerName";
-
-        try
-        {
-            conn.Open();
-
-            var command = new SqlCommand(querySQL, conn);
-            var dataReader = command.ExecuteReader();
-
-            if (dataReader != null)
-            {
-                while (dataReader.Read())
-                {
-                    var customer = new Customer();
-
-                    customer.CustomerID = Guid.Parse(dataReader["CustomerID"].ToString()!);
-                    customer.CustomerName = dataReader["CustomerName"].ToString();
-                    customer.EmailAddress = dataReader["EmailAddress"].ToString();
-
-                    customerList.Add(customer);
-                }
-            }
-
-            conn.Close();
-
-            return customerList;
-        }
-        catch (Exception ex)
-        {
-            throw new Exception(ex.Message);
-        }
+    public async Task<List<Customer>> GetCustomerList()
+    {
+        return await _customerRepository.GetCustomerList();
     }
 }
